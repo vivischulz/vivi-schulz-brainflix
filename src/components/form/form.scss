@@ -1,0 +1,30 @@
+@use "../../styles/reset" as *;
+@use "../../styles/fonts" as *;
+@use "../../styles/mixins" as mx;
+@use "../../styles/colors" as *;
+
+// @use "../../styles/partials/avatar";
+
+@use "../../styles/partials/button";
+@use "../../styles/partials/icon";
+@use "../../styles/partials/input-group";
+
+.form {
+  input, textarea{
+    width:100%;
+    margin-bottom:1.6rem;
+    &::placeholder{
+    color:$color-primary;
+    }
+  }
+
+    label,button{
+    display: block;
+   
+  }
+
+    // button{
+    // @extend .btn;
+    // }
+
+}
