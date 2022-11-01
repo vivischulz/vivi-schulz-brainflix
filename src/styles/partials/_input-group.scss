@@ -1,0 +1,81 @@
+@use "../reset" as *;
+@use "../colors" as *;
+@use "../fonts" as *;
+@use "../mixins" as mx;
+@use "../partials/icon" as *;
+@use "../partials/button" as *;
+@use "../partials/avatar" as *;
+
+.input{
+
+    &__search{
+        @include mx.flexed(row,flex-start, center);
+   
+    }
+
+    &__search-group{
+        border:1px solid $color-secondary;
+        border-radius: 4px;
+        @include mx.flexed(row,flex-start, center);
+        padding:0.8rem;
+        flex-grow: 1;
+        }
+    
+    &__search-icon{
+        @extend.icon;
+        width:1.6rem;
+        height:1.6rem;
+        @extend.icon--search;
+        margin-right: 1rem;
+    }
+    
+    &__search-name{
+    outline:0;
+    border:0;
+    display: block;
+    width:100%;
+    }
+
+    &__avatar1{
+        @extend .avatar;
+    }
+
+    &__avatar2{
+        @extend .avatar;
+       display: none;
+    }
+
+    &__btn{
+        @extend .btn;
+        @include mx.flexed(row,flex-start, center);
+        flex-grow: 1;
+       
+        
+    }
+
+    &__btn-icon{
+        @extend.icon;
+        @extend.icon--upload;  
+    }
+
+    &__btn-name{
+        flex-grow: 1;
+        text-transform: uppercase;
+    }
+}
+
+
+@include mx.mq-md{
+.input{
+    @include mx.flexed(row, flex-end, center);
+
+    &__avatar1{
+       display:none;
+    }
+     &__avatar2{
+       display: block;
+    }
+}
+
+
+}

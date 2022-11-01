@@ -1,0 +1,29 @@
+@use "../reset" as *;
+@use "../colors" as *;
+@use "../fonts" as *;
+@use "../mixins" as mx;
+
+/*--------button---------- */
+
+ .btn{
+    width:100%;
+    height: 4rem;
+    background-color: $color-active;
+    color: $color-primary-bg;
+    border: 0;
+    cursor: pointer;
+    outline: 0;
+    border-radius: 4px;
+    transition: color .25s ease-in-out;
+    &:hover {
+      background-color: $color-hover;
+    } 
+}
+
+@include mx.mq-md{
+    .btn{
+    padding-left: 3.2rem;
+    padding-right:3.2rem;
+    max-width: 15rem;
+    }
+}
