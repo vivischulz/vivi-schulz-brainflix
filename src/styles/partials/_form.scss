@@ -1,0 +1,187 @@
+@use "../reset" as *;
+@use "../colors" as *;
+@use "../fonts" as *;
+@use "../mixins" as mx;
+@use "../partials/icon" as *;
+@use "../partials/button" as *;
+@use "../partials/avatar" as *;
+
+.form, .comment {
+  margin:0 auto;
+ @extend .font__body;
+ @extend .font__body--md;
+ color:$color-primary;
+
+
+   &__btn{
+        @extend .btn;
+        @include mx.flexed(row,flex-start, center);
+        flex-grow: 1;
+        margin:0;
+        width:100%;
+    }
+
+    &__btn-icon{
+        margin-left:0.5rem;
+        @extend.icon;
+        @extend.icon--comment;  
+    }
+
+    &__btn-name{
+        flex-grow: 1;
+        text-transform: uppercase;
+    }
+
+  input, textarea{
+    &::placeholder{
+    color:$color-primary;
+  }
+
+  }
+  
+  label {
+    display:none;
+  }
+
+  input[type="text"],
+  textarea{
+    width: 100%;
+    padding: 1.2rem;
+    outline: 0;
+    margin-bottom: 1.2rem;
+    border-radius: 4px;
+    color: $color-primary;
+    border: 1px solid $color-outline;
+    background-color: $color-alternative;
+    &:focus{
+      border: 1px solid $color-primary;
+    }
+  }
+
+  textarea {
+
+    min-height: 3.6rem;
+  }
+
+  &--highlight{
+    box-shadow: 0 0 10px $color-outline;
+  }
+
+  
+  &__title {
+    text-transform: uppercase;
+   margin-bottom: 0.4rem;
+    color:$color-secondary;
+  }
+
+  &__section {
+    @include mx.flexed(row, flex-start, flex-start);
+    margin-top:2.4rem;
+    border-bottom: 1px solid $color-outline;
+    padding-bottom:2rem;
+  }
+ 
+  &__form-image { 
+    background-image: url(../../assets/images/Mohan-muruge.jpg);
+    width:100%;
+    width:3.6rem;
+    height:3.6rem;
+    border-radius: 50%;
+    background-size: cover;
+    margin-top: 1.6rem;
+    margin-right: 1.6rem;
+    flex:0 0 auto;
+    margin-right: 1.6rem;
+     
+   } 
+
+  &__form{
+    width: 100%;
+
+    flex:1 1 auto;
+  }
+
+   &__message-wraper{
+    border-radius:50%;
+    margin-right: 1.6rem;
+   
+   }
+
+   &__message-image{
+      width:3.6rem; 
+      height:3.6rem;
+      background-color: $color-outline;
+      border-radius:50%;
+     
+   }
+
+   &__message{
+    line-height: 1.25;
+    flex:8 1 0;
+   }
+
+   &__message-user{
+    font-weight:700;
+   }
+
+  &__message-user, &__message-date{
+  display:inline-block;
+ 
+  }
+
+  &__message-user, &__message-date, &__message-content{
+    padding-bottom:0.4rem;
+  }
+
+  &__message-date{
+    color:$color-secondary; 
+    position: relative;
+    float:right;
+  }
+
+  &__message-content{
+    color:$color-primary;
+  }
+
+
+}
+
+@include mx.mq-md {
+  .form, .comment {
+    button{
+      float:right;
+    }
+  
+    
+    input[type="text"],
+    textarea{
+        margin-bottom: 1.2rem;
+    }
+    
+    textarea {
+     max-width: 40rem;
+      max-height: 4rem;
+    }
+   
+  &__form{
+    padding-bottom:1rem;
+  }
+  
+  &__form,&__message{
+    flex:8 1 0;
+  }
+
+  &__form-image, &__message-image{
+      width:4.8rem; 
+      height:4.8rem;
+   }
+
+}
+
+}
+
+@include mx.mq-lg{
+.form,.comment{
+  width:80%;
+}
+}

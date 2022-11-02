@@ -28,8 +28,8 @@
     max-height: 2.4rem;
     cursor: pointer;
 
-    width:2.4rem;
-    height:2.4rem;
+    width:2rem;
+    height:2rem;
     display: inline-block;
 }
 
@@ -51,8 +51,7 @@
     background-image: url(../../assets/images/icons/likes.svg);
     background-size: contain;
     background-repeat: no-repeat;
-    width:1.9rem;
-    height:1.9rem;
+    
     position:relative;
     top:-3px;
     margin-left:0.5rem;
@@ -61,6 +60,10 @@
 .icon--upload{
     background-image: url(../../assets/images/icons/upload.svg);
     background-size: cover;
+}
 
+.icon--comment{
+    background-image: url(../../assets/images/icons/add_comment.svg);
+    background-size: cover;
 }
 
