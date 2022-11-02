@@ -7,11 +7,17 @@
 
 
 .hv{
-    width:100%;
+ 
+    max-width: 1280px;
+    margin: 0 auto;
+
+ &__video-wrap{
+   width:100%;
     padding-top:56.25%;
     height:0;
-    position:relative;
+    position: relative;
     background-color:$color-video;
+ }
     
  &__video{
     width:100%;
@@ -28,17 +34,18 @@
 
     width: 90%;
     position:relative;
-    top:-40px;
+    top:-70px;
     margin:0 auto;
+    @include mx.flexed(row, flex-start, center);
+    gap:1rem;
 }
 
-&__icon--container{
+&__icon-play--container{
     @extend .icon--container;
-    width:1.8rem;
-    height:1.8rem;
-    border-radius: 2px;
+    flex-basis: 10rem;
+    // background-color: red;
     position: relative;
-    left:5px;
+
 }
 
 &__icon-play{
@@ -49,66 +56,60 @@
     position: relative;
 }
 
-&__control-bar{
+&__control-bar--container{
     @extend .icon--container;
-    width:73%;
-    height:1.8rem;
-    border-radius: 2px;
-    display: inline-block;
-    position: relative;
-    top:-18px;
-    left:30px;
+
+    border-radius:5px;
+  
+     position: relative;
+    @include mx.flexed(row, flex-start, center);
+    flex-basis: 95rem;
+    // background-color: green;
 }
 
 &__control-on-top{
-    border-bottom: 3px solid $color-primary;
-    width:60%;
+    border-bottom: 3px solid $color-video;
+    flex-basis: 95rem;
     border-radius: 2px;
+    margin:0 1.6rem;
     position: relative;
-    top:-31px;
-    left:40px;
+    
 }
 
 &__control-time{
-    position: relative;
-    top:-51px;
-    left:240px;
-    font-size:0.5rem;
+    font-size:0.8rem;
+    letter-spacing: 0.1rem;
     color:$color-primary-bg;
+    flex-basis: 10rem;
+    margin-right: 0.5rem;
+    position: relative;
 }
 
-&__icon--container-extend{
+&__screen-value--container{
     @extend .icon--container;
-    width:13%;
-    height:1.8rem;
-    border-radius: 2px;
-    display: inline-block;
+    @include mx.flexed(row, space-around, center);
+    border-radius:5px;
+   
     position: relative;
-    top:-42px;
-    left:255px;
+    flex-basis: 15rem;
+
   }
 
 
 &__fullscreen{
     @extend .icon;
     @extend .icon--fullscreen;
-    position: relative;
     margin-left: 0.2rem;
     width:1.8rem;
-
+     position: relative;
 }
 
 &__valueup{
-     @extend .icon;
+    @extend .icon;
     @extend .icon--volumn_up;
-    position: relative;
     margin-left: 0.2rem;
     width:1.8rem;
-    
+    position: relative;
 }
-
-}
-
-@include mx.mq-md{
 
 }

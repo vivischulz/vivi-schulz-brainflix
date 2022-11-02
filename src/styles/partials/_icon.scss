@@ -24,7 +24,7 @@
 
 .icon{
     width:100%;
-     max-width: 2.4rem;
+    max-width: 2.4rem;
     max-height: 2.4rem;
     cursor: pointer;
 
@@ -71,6 +71,7 @@
 .icon--fullscreen{
     background-image: url(../../assets/images/icons/fullscreen.svg);
     background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .icon--pause{
@@ -104,9 +105,11 @@
 }
 
 .icon--container{
-    border-radius: 4px;
+
+    height:2rem;
     @include mx.flexed(inline-block, center, center);
-     &::before {
+    padding: 0.6rem;
+    &::before {
     content: "";
     position: absolute;
     top: 0px;
