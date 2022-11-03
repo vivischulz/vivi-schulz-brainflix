@@ -13,7 +13,7 @@ return (
           poster="https://i.imgur.com/l2Xfgpl.jpg"
           className="hv__video"
         />
-
+{/* 
         <section className="hv--control-wrap">
           <div className="hv__icon-play--container">
             <span className="hv__icon-play"></span>
@@ -28,7 +28,7 @@ return (
             <div className="hv__fullscreen"></div>
             <div className="hv__valueup"></div>
           </div>
-        </section>
+        </section> */}
       </div>
     </div>
   </>

@@ -1,6 +1,6 @@
-import './Main.scss'
+import './SideBar.scss'
 
-const Main = () => {
+export default function SideBar (){
   return (
     <>
       <main className="main">
@@ -69,37 +69,6 @@ const Main = () => {
               </section>
             </article>
 
-            {/* <article className="comment__section">
-            <div className="comment__message-wraper">
-              <div className="comment__message-image"></div>
-            </div>
-            <section className="comment__message">
-              <p className="comment__message-user">Gary Wong</p>
-              <p className="comment__message-date">07/15/2021</p>
-
-              <p className="comment__message-content">
-                Every time I see him shred I feel so motivated to get off my
-                couch and hop on my board. He’s so talented! I wish I can ride
-                like him one day so I can really enjoy myself!
-              </p>
-            </section>
-          </article>
-
-          <article className="comment__section">
-            <div className="comment__message-wraper">
-              <div className="comment__message-image"></div>
-            </div>
-            <section className="comment__message">
-              <p className="comment__message-user">Theodore Duncan</p>
-              <p className="comment__message-date">07/11/2021</p>
-
-              <p className="comment__message-content">
-                How can someone be so good!!! You can tell he lives for this and
-                loves to do it every day. Every time I see him I feel instantly
-                happy! He’s definitely my favorite ever!
-              </p>
-            </section>
-          </article> */}
           </section>
         </section>
         {/*--- Next Videos -------- */}
@@ -125,4 +94,3 @@ const Main = () => {
     </>
   );
 };
-export default Main;
