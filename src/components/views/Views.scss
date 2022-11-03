@@ -5,11 +5,58 @@
 @use "../../styles/partials/icon" as *;
 @use "../../styles/partials/button" as *;
 
+.views {
+  margin: 1.6rem;
+  @extend .font__body;
+  color: $color-primary;
 
-.views{
- 
+  &__title {
+    @extend .page__header;
+  }
 
- &__icon-views {
+  &__detail {
+    border-top: 1px solid $color-outline;
+    border-bottom: 1px solid $color-outline;
+
+    padding-top: 1.2rem;
+    padding-bottom: 0.6rem;
+    @include mx.flexed(row, flex-start, center);
+  }
+
+  &__author {
+    @extend .font__section-header;
+    margin-right: 1rem;
+    position: relative;
+    top: -5px;
+    margin-bottom: 0.6rem;
+  }
+
+  &__detail--left {
+    flex-grow: 1;
+  }
+
+  &__detail--right {
+    flex-grow: 1;
+  }
+
+  &__date,
+  &__views,
+  &__likes {
+    color: $color-secondary;
+    margin-right: 1rem;
+  }
+
+  &__views {
+    margin-bottom: 0.4rem;
+  }
+
+  &__word {
+    margin-left: 1rem;
+    position: relative;
+    top: -7px;
+  }
+
+  &__icon-views {
     @extend .icon;
     @extend .icon--views;
   }
@@ -17,6 +64,32 @@
   &__icon-likes {
     @extend .icon;
     @extend .icon--likes;
+    width: 1.7rem;
+    margin-left: 0.5rem;
   }
+}
 
+@include mx.mq-md {
+  .views {
+    &__detail {
+      border-top: 0;
+      @include mx.flexed(row, space-between, center);
+    }
+
+    &__detail--right {
+      flex-grow: 0;
+    }
+
+    &__author,
+    &__date {
+      display: inline-block;
+      position: relative;
+      top: 0;
+    }
+
+    &__views,
+    &__likes {
+      display: inline-block;
+    }
+  }
 }
