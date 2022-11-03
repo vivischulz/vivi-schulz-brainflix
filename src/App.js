@@ -5,38 +5,46 @@ import Views from "./components/views/Views";
 import SideBar from "./components/sidebar/SideBar";
 import Relatives from "./components/relatives/Relatives";
 
-// import {useState} from 'react';
+import {useState} from 'react';
 
-// import bfVideos from "../src/data/videos.json";
-// import bfVideoDetails from "../src/data/video-details.json";
+import bfVideos from "../src/data/videos.json";
+import bfVideoDetails from "../src/data/video-details.json";
 
 
 export default function App() {
-  // const defaultId = "84e96018-4022-434e-80bf-000ce4cd12b8";
-  
-  // const getbfVideos = (videoId) => {
-  //   return bfVideos.filter((video)=> video.id !== videoId)
-  // };
-  // const getbfVideosDetail = (videoId) => {
-  //   return bfVideoDetails.find(
-  //     (video) => video.id === videoId
-  //     );
-  //   }
 
-  // const [videoId, setVideoId] = useState(bfVideos[0].id);
-  // const [videos, setVideos] = useState(getbfVideosDetail(videoId));
   
+  const getbfVideos = (videoId) => {
+    return bfVideos.filter((video)=> video.id !== videoId)
+  };
+  const getbfVideosDetail = (videoId) => {
+    return bfVideoDetails.find(
+      (video) => video.id === videoId
+      );
+    }
+ 
+
+const [videoId,setVideoId] = useState(bfVideos[0].id);
+const [videos,setVideos] = useState(getbfVideos(videoId));
+const [videoDetails,setVideoDetails] = useState(getbfVideosDetail(videoId));
+
+const handleClick = (clickEvnt, videoIdClickedOn) =>{
+  setVideoId(videoIdClickedOn);
+  setVideos(getbfVideos(videoIdClickedOn));
+  setVideoDetails(getbfVideosDetail(videoIdClickedOn));
+  console.log('click');
+};
 
   return (
     <div className="App">
       <Header />
-      <HeroVideo />
+      <HeroVideo video={videoDetails} />
       <section className="App__wrap">
         <section className="App__wrap-left">
-          <Views />
-          <Relatives />
+          <Views video={videoDetails} />
+          <Relatives comments={videoDetails.comments} />
         </section>
-        <SideBar />
+        <SideBar videos={videos} onClick={handleClick} />
       </section>
     </div>
   );

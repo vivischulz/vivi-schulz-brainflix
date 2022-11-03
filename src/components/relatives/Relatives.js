@@ -1,10 +1,9 @@
 import "./Relatives.scss";
 
-export default function Relatives(){
+export default function Relatives({comments}){
 
 return(
     <>
-        {/*--- Comments -------- */}
           <section className="form">
             <p className="form__comment-count"> 3 comments</p>
             <div className="form__section">
@@ -28,25 +27,27 @@ return(
             </div>
           </section>
 
-          <section className="comment">
-            <article className="comment__section">
+          <section className="comment comment--message-block">
+            { comments.length >0 ? comments.map((comment) => (
+            <article className="comment__section" key={comment.id}>
+             
               <div className="comment__message-wraper">
                 <div className="comment__message-image"></div>
               </div>
-              <section className="comment__message">
-                <p className="comment__message-user">UMicheal Lyons</p>
-                <p className="comment__message-date">08/09/2021</p>
 
-                <p className="comment__message-content">
-                  They BLEW the ROOF off at their last event, once everyone
-                  started figuring out they were going. This is still simply the
-                  greatest opening of an event I have EVER witnessed.
-                </p>
-              </section>
+                <section className="comment__message" >
+                <p className="comment__message-user">{comment.name}</p>
+                <p className="comment__message-date">{comment.timestamp}</p>
+                <p className="comment__message-content">{comment.comment}</p>
+                </section>
+              )):( 
+                <section className="comment__no-data-container">
+                  <p className="comment__no-data">No Comments</p>
+                </section>
+              )
             </article>
-
           </section>
+            }
     </>
-)
-
+  );
 }

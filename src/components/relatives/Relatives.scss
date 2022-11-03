@@ -63,9 +63,6 @@
       height: 10rem;
     }
 
-    // &--highlight {
-    //   box-shadow: 0 0 10px $color-outline;
-    // }
 
     &__comment-count{
         margin-top: 2.4rem;
@@ -82,6 +79,7 @@
       margin-top: 2.4rem;
       border-bottom: 1px solid $color-outline;
       padding-bottom: 2rem;
+
     }
 
     &__form-image {
@@ -100,6 +98,10 @@
       width: 100%;
 
       flex: 1 1 auto;
+    }
+
+    &--message-block{
+      @include mx.flexed(column, flex-start, flex-start);
     }
 
     &__message-wraper {
