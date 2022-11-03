@@ -9,10 +9,16 @@
 //------- form  -------------
 
   .form, .comment {
-    margin: 0 auto;
+   
+    margin:1.6rem;
     @extend .font__body;
     @extend .font__body--md;
     color: $color-primary;
+    
+    &__comment-count{
+      @extend .font__section-header;
+      margin-top: 2rem;
+    }
 
     &__btn {
       @extend .btn;
@@ -63,22 +69,19 @@
       height: 10rem;
     }
 
-
-    &__comment-count{
-        margin-top: 2.4rem;
-    }
-
     &__title {
       text-transform: uppercase;
       margin-bottom: 0.4rem;
       color: $color-secondary;
+      @extend .font__section-header;
     }
 
     &__section {
       @include mx.flexed(row, flex-start, flex-start);
-      margin-top: 2.4rem;
+      margin-top: 1.6rem;
       border-bottom: 1px solid $color-outline;
       padding-bottom: 2rem;
+      width:100%;
 
     }
 
@@ -96,7 +99,6 @@
 
     &__form {
       width: 100%;
-
       flex: 1 1 auto;
     }
 

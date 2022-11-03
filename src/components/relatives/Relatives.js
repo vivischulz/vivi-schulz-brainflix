@@ -1,10 +1,11 @@
 import "./Relatives.scss";
+import {getDate} from '../../components/views/Views';
 
 export default function Relatives({ comments }) {
   return (
     <>
       <section className="form">
-        <p className="form__comment-count"> 3 comments</p>
+        <p className="form__comment-count"> {comments.length} comments</p>
         <div className="form__section">
           <div className="form__form-image"></div>
           <form className="form__form">
@@ -34,7 +35,7 @@ export default function Relatives({ comments }) {
             </div>
             <section className="comment__message">
               <p className="comment__message-user">{comment.name}</p>
-              <p className="comment__message-date">{comment.timestamp}</p>
+              <p className="comment__message-date">{getDate(comment.timestamp)}</p>
               <p className="comment__message-content">{comment.comment}</p>
             </section>
           </article>

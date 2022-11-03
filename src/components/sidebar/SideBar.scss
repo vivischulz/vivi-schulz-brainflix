@@ -6,15 +6,19 @@
 @use "../../styles/partials/button" as *;
 
 .sidebar {
+  margin:1.6rem;
 
+  &__title{
+    @extend .font__section-header;
+    color:$color-secondary;
+  }
 
-  //------ Next Videos  -------
   &__wrap-video {
    @include mx.flexed(column, flex-start, flex-start);
  }
 
   &__wrap-word {
-    @include mx.flexed(row, flex-start, center); 
+    @include mx.flexed(row, flex-start, flex-start); 
   }
 
 
@@ -32,8 +36,21 @@
   
   &__subtitle-wrap{
       flex-basis: 15rem;
+      @extend .font__body;
+      color:$color-primary;
   }
 
+  &__subtitle{
+    font-weight:700;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+
+  }
+
+  &__author{
+    font-weight: 400;
+
+  }
 
 }
 @include mx.mq-lg {
