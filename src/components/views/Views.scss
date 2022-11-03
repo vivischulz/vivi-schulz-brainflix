@@ -12,6 +12,7 @@
 
   &__title {
     @extend .page__header;
+    margin-bottom: 1.6rem;
   }
 
   &__detail {
@@ -66,6 +67,12 @@
     @extend .icon--likes;
     width: 1.7rem;
     margin-left: 0.5rem;
+  }
+
+  &__p{
+    margin-top: 1.6rem;
+    line-height: 1.5;
+    font-weight:600;
   }
 }
 
