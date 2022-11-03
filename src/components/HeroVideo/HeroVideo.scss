@@ -23,6 +23,16 @@
     margin:0 auto;
  }
 
+ &__icon-views {
+    @extend .icon;
+    @extend .icon--views;
+  }
+
+  &__icon-likes {
+    @extend .icon;
+    @extend .icon--likes;
+  }
+
 // &--control-wrap{
 
 //     width: 90%;

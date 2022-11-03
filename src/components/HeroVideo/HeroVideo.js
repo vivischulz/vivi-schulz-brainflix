@@ -4,6 +4,7 @@ const HeroVideo = () => {
 
 return (
   <>
+    {/*---Hero-video views-------- */}
     <div className="hv">
       <div className="hv__video-wrap">
         <video
@@ -13,7 +14,7 @@ return (
           poster="https://i.imgur.com/l2Xfgpl.jpg"
           className="hv__video"
         />
-{/* 
+        {/* 
         <section className="hv--control-wrap">
           <div className="hv__icon-play--container">
             <span className="hv__icon-play"></span>
@@ -31,6 +32,8 @@ return (
         </section> */}
       </div>
     </div>
+
+
   </>
 );
 

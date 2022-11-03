@@ -1,0 +1,22 @@
+@use "../../styles/reset" as *;
+@use "../../styles/colors" as *;
+@use "../../styles/fonts" as *;
+@use "../../styles/mixins" as mx;
+@use "../../styles/partials/icon" as *;
+@use "../../styles/partials/button" as *;
+
+
+.views{
+ 
+
+ &__icon-views {
+    @extend .icon;
+    @extend .icon--views;
+  }
+
+  &__icon-likes {
+    @extend .icon;
+    @extend .icon--likes;
+  }
+
+}

@@ -1,0 +1,15 @@
+@use "./styles/mixins" as mx;
+
+
+@include mx.mq-lg {
+
+    .App{
+
+    &__wrap{
+        @include mx.flexed(row, space-between, flex-start);
+    }
+
+}
+
+
+}

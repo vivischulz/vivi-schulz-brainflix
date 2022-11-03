@@ -1,12 +1,14 @@
 import "../src/app.scss"
 import Header from './components/header/Header';
 import HeroVideo from "./components/heroVideo/HeroVideo";
+import Views from "./components/views/Views";
 import SideBar from "./components/sidebar/SideBar";
+import Relatives from "./components/relatives/Relatives";
 
-import {useState} from 'react';
+// import {useState} from 'react';
 
-import bfVideos from "../src/data/videos.json";
-import bfVideoDetails from "../src/data/video-details.json";
+// import bfVideos from "../src/data/videos.json";
+// import bfVideoDetails from "../src/data/video-details.json";
 
 
 export default function App() {
@@ -29,7 +31,13 @@ export default function App() {
     <div className="App">
       <Header />
       <HeroVideo />
-      <SideBar />
+      <section className="App__wrap">
+        <section className="App__wrap-left">
+          <Views />
+          <Relatives />
+        </section>
+        <SideBar />
+      </section>
     </div>
   );
 }
