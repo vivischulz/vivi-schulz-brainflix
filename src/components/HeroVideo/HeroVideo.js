@@ -2,7 +2,7 @@ import "./HeroVideo.scss";
 
 export default function HeroVideo ({video}){
 
-  const {image, ...rest} = video;
+  const {image} = video;
 
   return (
       <div className="hv">

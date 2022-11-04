@@ -1,6 +1,6 @@
 import './SideBar.scss'
 
-export default function SideBar ({videos, onClick}){
+export default function SideBar ({videos, myClick}){
   
   return (
     <aside className="sidebar">
@@ -14,7 +14,7 @@ export default function SideBar ({videos, onClick}){
                 <video
                   control="controls"
                   poster={video.image}
-                  onClick={(clickEvnt) => onClick(clickEvnt, video.id)}
+                  onClick={(clickEvnt) => myClick(clickEvnt, video.id)}
                   className="sidebar__nextv"
                 />
           

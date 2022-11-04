@@ -33,6 +33,19 @@
     @extend .icon;
     @extend .icon--likes;
   }
+}
+
+@include mx.mq-md{
+  .hv{
+     &__video-wrap{
+   max-height:40rem;
+ }
+    
+ &__video{
+  max-height:40rem;
+ }
+  }
+}
 
 // &--control-wrap{
 
@@ -116,4 +129,4 @@
 //     position: relative;
 // }
 
-}
+

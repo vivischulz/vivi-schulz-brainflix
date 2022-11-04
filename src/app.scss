@@ -1,15 +1,22 @@
 @use "./styles/mixins" as mx;
-
+@use "./styles/colors" as *;
 
 @include mx.mq-lg {
+  .App {
+     background-color: $color-primary-bg;
+    &__wrap {
+      @include mx.flexed(row, space-between, flex-start);
 
-    .App{
-
-    &__wrap{
-        @include mx.flexed(row, space-between, flex-start);
+      width:80%;
+      margin:0 auto;
     }
-
+  }
 }
 
-
+@include mx.mq-lg{
+    .App{
+       
+        margin-top: 8rem;
+        margin-bottom: 8rem;
+    }
 }

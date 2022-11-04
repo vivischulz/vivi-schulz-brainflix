@@ -13,6 +13,7 @@
   &__title {
     @extend .page__header;
     margin-bottom: 1.6rem;
+    font-weight: 700;
   }
 
   &__detail {
@@ -74,18 +75,32 @@
     margin-top: 1.6rem;
     line-height: 1.5;
     font-weight:400;
+    letter-spacing:0.1rem;
   }
 }
 
 @include mx.mq-md {
   .views {
+    margin-left: 2.4rem;
+    margin-right:2.4rem;
+
+    &__title{
+      margin-bottom: 1rem;
+    }
+
     &__detail {
       border-top: 0;
       @include mx.flexed(row, space-between, center);
+      padding-top:0;
+      padding-bottom: 0;
     }
 
     &__detail--right {
       flex-grow: 0;
+    }
+    
+    &__author{
+      margin-right:4rem;
     }
 
     &__author,
@@ -98,6 +113,16 @@
     &__views,
     &__likes {
       display: inline-block;
+    }
+  }
+}
+
+@include mx.mq-lg {
+  .views {
+  margin-right:0;
+
+   &__p{
+      margin-right: 2.4rem;
     }
   }
 }

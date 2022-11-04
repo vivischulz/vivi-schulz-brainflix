@@ -6,11 +6,15 @@
 @use "../../styles/partials/button" as *;
 
 .sidebar {
-  margin:1.6rem;
+  padding-top:1.6rem;
+  padding-left:1.6rem;
+  padding-bottom:1.6rem;
 
   &__title{
     @extend .font__section-header;
     color:$color-secondary;
+    text-transform: uppercase;
+    padding-bottom:0.8rem;
   }
 
   &__wrap-video {
@@ -19,6 +23,7 @@
 
   &__wrap-word {
     @include mx.flexed(row, flex-start, flex-start); 
+    width:100%;
   }
 
 
@@ -28,9 +33,9 @@
     border-radius: 10px;
     width:20rem;
     height:7rem;
-
+    
     cursor: pointer;
-    margin:1.6rem;
+    margin:0.8rem 1.6rem 0.8rem 0;
     flex-basis: 10rem;
   }
   
@@ -42,7 +47,7 @@
 
   &__subtitle{
     font-weight:700;
-    margin-top: 2rem;
+    margin-top: 1rem;
     margin-bottom: 0.5rem;
 
   }
@@ -53,9 +58,19 @@
   }
 
 }
+
+@include mx.mq-md {
+  .sidebar{
+      padding-top:2.4rem;
+  padding-left:2.4rem;
+  border-left:1px solid $color-outline;
+
+}
+}
 @include mx.mq-lg {
   .sidebar {
     @include mx.flexed(row, space-between, flex-start);
+   
    
   }
 }

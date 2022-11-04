@@ -32,7 +32,6 @@ const handleClick = (clickEvnt, videoIdClickedOn) =>{
   setVideoId(videoIdClickedOn);
   setVideos(getbfVideos(videoIdClickedOn));
   setVideoDetails(getbfVideosDetail(videoIdClickedOn));
-  console.log('click');
 };
 
   return (
@@ -44,7 +43,7 @@ const handleClick = (clickEvnt, videoIdClickedOn) =>{
           <Views video={videoDetails} />
           <Relatives comments={videoDetails.comments} />
         </section>
-        <SideBar videos={videos} onClick={handleClick} />
+        <SideBar videos={videos} myClick={handleClick} />
       </section>
     </div>
   );

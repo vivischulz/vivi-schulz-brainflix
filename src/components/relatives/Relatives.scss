@@ -6,18 +6,17 @@
 @use "../../styles/partials/avatar" as *;
 @use "../../styles/partials/button" as *;
 
-//------- form  -------------
 
   .form, .comment {
    
-    margin:1.6rem;
+    margin:1rem 1.6rem;
     @extend .font__body;
     @extend .font__body--md;
     color: $color-primary;
     
     &__comment-count{
       @extend .font__section-header;
-      margin-top: 2rem;
+      margin-top: 1rem;
     }
 
     &__btn {
@@ -80,8 +79,7 @@
       @include mx.flexed(row, flex-start, flex-start);
       margin-top: 1.6rem;
       border-bottom: 1px solid $color-outline;
-      padding-bottom: 2rem;
-      width:100%;
+      padding-bottom: 1.6rem;
 
     }
 
@@ -152,6 +150,29 @@
   @include mx.mq-md {
     .form,
     .comment {
+      margin-left: 2.4rem;
+      margin-right:2.4rem;
+
+    &__section-md{
+      padding-bottom:0;
+    }
+
+    
+
+    &__form--left-md{
+      @include mx.flexed(row, space-between,center);
+    }
+
+    &__text-title-wrap{
+      flex-grow:2;
+    }
+
+    &__btn{
+      flex-grow:1;
+      position: relative;
+      top:2px;
+    }
+
       button {
         float: right;
       }
@@ -162,7 +183,7 @@
       }
 
       textarea {
-        max-width: 40rem;
+        width:95%;
         max-height: 4rem;
       }
 
@@ -179,6 +200,30 @@
       &__message-image {
         width: 4.8rem;
         height: 4.8rem;
+      }
+
+
+
+    }
+  }
+
+  @include mx.mq-lg {
+    .form,
+    .comment {
+      margin-left: 2.4rem;
+      margin-right:0;
+
+       &__comment-count{
+      margin-top: 3.6rem;
+    }
+
+
+      &__btn{
+        margin-right: 2.4rem;
+      }
+
+      &__message{
+        margin-right:2.4rem;
       }
     }
   }
