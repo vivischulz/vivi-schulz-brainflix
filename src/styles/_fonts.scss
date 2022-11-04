@@ -8,6 +8,14 @@
   font-weight: 400;
 }
 
+/* Demi Bold */
+@font-face {
+  font-family: "Avenir";
+  src: url("../assets/fonts/AvenirNextLTPro-Demi.otf") format("opentype"),
+    url("../assets/fonts/Alternative/AvenirNextLTProDemi.ttf")
+      format("truetype");
+  font-weight: 600;
+}
 
 /* Bold */
 @font-face {
@@ -35,14 +43,14 @@
 /* font setting */
 .page__header {
   font-size: 2.4rem;
-  line-height: 2;
-  font-weight: 700;
+  line-height: 1.5;
+  font-weight: 600;
 }
 
 .font__section-header {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   line-height: 1.25;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .font__sub-header {
@@ -52,15 +60,15 @@
 }
 
 .font__body {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   line-height: 1.125;
   font-weight: 400;
 }
 
 .font__label{
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   line-height: 1.25;
-  font-weight:700;
+  font-weight:600;
 }
 
 @include mx.mq-md {
@@ -92,6 +100,6 @@
 .font__label--md{
   font-size: 1.2rem;
   line-height: 1.25;
-  font-weight:700;
+  font-weight:600;
 }
 }

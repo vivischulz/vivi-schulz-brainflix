@@ -17,15 +17,15 @@
     max-height:3.6rem;
     border-radius: 50%;
     background-size: cover;
-    margin: 1.6rem;
+   margin:1rem;
     flex:0 0 auto;
 }
 
 @include mx.mq-md{
     .avatar{
-    width:10rem;
-    height:10rem;
-    max-width:10rem;
-    max-height:10rem;
+    width:4rem;
+    height:4rem;
+    max-width:4rem;
+    max-height:4rem;
     }
 }

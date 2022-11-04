@@ -24,12 +24,12 @@
 
 .icon{
     width:100%;
-     max-width: 2.4rem;
+    max-width: 2.4rem;
     max-height: 2.4rem;
     cursor: pointer;
 
-    width:2.4rem;
-    height:2.4rem;
+    width:2rem;
+    height:2rem;
     display: inline-block;
 }
 
@@ -51,16 +51,73 @@
     background-image: url(../../assets/images/icons/likes.svg);
     background-size: contain;
     background-repeat: no-repeat;
-    width:1.9rem;
-    height:1.9rem;
-    position:relative;
-    top:-3px;
-    margin-left:0.5rem;
 }
 
 .icon--upload{
     background-image: url(../../assets/images/icons/upload.svg);
-    background-size: cover;
+    background-size: contain;
+}
 
+.icon--comment{
+    background-image: url(../../assets/images/icons/add_comment.svg);
+    background-size:contain;
+}
+
+.icon--close_fullscreen{
+    background-image: url(../../assets/images/icons/close_fullscreen.svg);
+    background-size:contain;
+}
+
+.icon--fullscreen{
+    background-image: url(../../assets/images/icons/fullscreen.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.icon--pause{
+    background-image: url(../../assets/images/icons/pause.svg);
+    background-size: contain;
+}
+
+.icon--play{
+    background-image: url(../../assets/images/icons/play.svg);
+    background-size: contain;
+}
+
+.icon--publish{
+    background-image: url(../../assets/images/icons/publish.svg);
+    background-size: contain;
+}
+
+.icon--publish{
+    background-image: url(../../assets/images/icons/scrub.svg);
+    background-size: contain;
+}
+
+.icon--volume_off{
+    background-image: url(../../assets/images/icons/volume_off.svg);
+    background-size: contain;
+}
+
+.icon--volumn_up{
+    background-image: url(../../assets/images/icons/volume_up.svg);
+    background-size:contain;
+}
+
+.icon--container{
+
+    height:2rem;
+    @include mx.flexed(inline-block, center, center);
+    padding: 0.6rem;
+    &::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.5;
+    background-color: $color-video;
+     }
 }
 

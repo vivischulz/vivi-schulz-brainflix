@@ -1,0 +1,140 @@
+@use "../../styles/reset" as *;
+@use "../../styles/colors" as *;
+@use "../../styles/fonts" as *;
+@use "../../styles/mixins" as mx;
+@use "../../styles/partials/icon" as *;
+@use "../../styles/partials/avatar" as *;
+@use "../../styles/partials/button" as *;
+
+.header{
+
+    padding: 0 1rem 1rem 1rem;
+
+    &__logo{
+        @extend .logo;
+        margin:0 auto;
+        margin-top: 1.6rem;
+        margin-bottom: 1rem;
+    }
+
+   
+    
+    &__search{
+        @include mx.flexed(row,flex-start, center);
+    }
+
+    &__search-group{
+        border:1.5px solid $color-outline;
+        background-color: $color-alternative;
+        border-radius: 4px;
+        @include mx.flexed(row,flex-start, center);
+        padding:1rem 2rem;
+        flex-grow: 1;
+        margin:1rem;
+        }
+    
+    &__search-icon{
+        @extend.icon;
+        width:1.6rem;
+        height:1.6rem;
+        @extend.icon--search;
+        margin-right: 1rem;
+    }
+    
+    &__search-name{
+    outline:0;
+    display: block;
+    width:100%;
+    border:0;
+    background-color:  $color-alternative;
+        &::placeholder{
+        color:$color-primary;
+        @extend .font__label;
+        @extend .font__label--md;
+    }
+    }
+
+    &__avatar1{
+        @extend .avatar;
+    }
+
+    &__avatar2{
+        @extend .avatar;
+       display: none;
+    }
+
+    &__btn{
+        @extend .btn;
+        width:94%;
+        @include mx.flexed(row,flex-start, center);
+        flex-grow: 1;
+       
+        
+    }
+
+    &__btn-icon{
+        margin-left: 1.4rem;
+        @extend.icon;
+        @extend.icon--upload;  
+    }
+
+    &__btn-name{
+        flex-grow: 1;
+        text-transform: uppercase;
+        position:relative;
+       right:1rem;
+    }
+}
+
+
+@include mx.mq-md{
+.header{
+    padding-top:0.2rem;
+    padding-bottom: 0;
+    margin:0 auto;
+    @include mx.flexed(row, space-between, center);
+    &__logo{
+       width:15rem;
+       margin:0;
+       margin-left: 1.6rem;
+       flex-grow: 1;
+    }
+
+    &__search-wrap{
+    @include mx.flexed(row,flex-end, center);
+    float:right;
+    
+    }
+
+    
+
+    &__avatar1{
+       display:none;
+    }
+     &__avatar2{
+       display: block;
+    }
+
+     &__btn-name{
+        position:normal;
+
+    }
+
+    &__search-group{
+      
+        padding:1rem 7rem 1rem 1rem;
+    
+        }
+
+     
+
+}
+
+
+}
+
+@include mx.mq-lg{
+  .header{
+    width:80%;
+  }
+}

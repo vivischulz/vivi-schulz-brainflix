@@ -6,7 +6,10 @@
 /*--------button---------- */
 
  .btn{
-    width:100%;
+  @extend .font__label;
+  @extend .font__label--md;
+  letter-spacing: 0.1rem;
+  
     height: 4rem;
     background-color: $color-active;
     color: $color-primary-bg;
@@ -14,7 +17,8 @@
     cursor: pointer;
     outline: 0;
     border-radius: 4px;
-    margin-bottom:1.6rem;
+    margin:1rem auto;
+
     transition: color .25s ease-in-out;
     &:hover {
       background-color: $color-hover;
@@ -23,8 +27,8 @@
 
 @include mx.mq-md{
     .btn{
-    padding-left: 3.2rem;
-    padding-right:3.2rem;
+    // padding-left: 3.2rem;
+    // padding-right:3.2rem;
     max-width: 15rem;
     }
 }
