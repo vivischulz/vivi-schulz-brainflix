@@ -35,17 +35,21 @@ const handleClick = (clickEvnt, videoIdClickedOn) =>{
 };
 
   return (
-    <div className="App">
-      <Header />
-      <HeroVideo video={videoDetails} />
-      <section className="App__wrap">
-        <section className="App__wrap-left">
-          <Views video={videoDetails} />
-          <Relatives comments={videoDetails.comments} />
+    <>
+      <div className="App__block-bg"></div>
+      <div className="App">
+        <Header />
+        <HeroVideo video={videoDetails} />
+        <section className="App__wrap">
+          <section className="App__wrap-left">
+            <Views video={videoDetails} />
+            <Relatives comments={videoDetails.comments} />
+          </section>
+          <SideBar videos={videos} myClick={handleClick} />
         </section>
-        <SideBar videos={videos} myClick={handleClick} />
-      </section>
-    </div>
+      </div>
+      <div className="App__block-bg"></div>
+    </>
   );
 }
 
