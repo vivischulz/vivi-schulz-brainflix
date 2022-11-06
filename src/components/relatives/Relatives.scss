@@ -49,11 +49,11 @@
     }
 
     input[type="text"],
-    textarea {
+    &__textarea {
       width: 100%;
       padding: 1.2rem;
       outline: 0;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.6rem;
       border-radius: 4px;
       color: $color-primary;
       border: 1px solid $color-outline;
@@ -61,10 +61,6 @@
       &:focus {
         border: 1px solid $color-primary;
       }
-    }
-
-    textarea {
-      height: 10rem;
     }
 
     &__title {
@@ -178,12 +174,7 @@
         float: right;
       }
 
-      input[type="text"],
-      textarea {
-        margin-bottom: 1.2rem;
-      }
-
-      textarea {
+      &__textarea {
         width:95%;
         max-height: 4rem;
       }
