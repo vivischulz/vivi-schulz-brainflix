@@ -1,31 +1,17 @@
 import "./Relatives.scss";
 import {getDate} from '../../components/views/Views';
+import CommentForm from '../commentForm/CommentForm';
 
-export default function Relatives({ comments }) {
+export default function Relatives({ comments, handleCommentAdd }) {
+
+  console.log(comments);
   return (
     <>
       <section className="form">
         <p className="form__comment-count"> {comments.length} Comments</p>
         <div className="form__section form__section-md">
           <div className="form__form-image"></div>
-          <form className="form__form form__form--left-md">
-            <div className="form__text-title-wrap">
-              <h2 className="form__title">Join the Conversation</h2>
-              <label htmlFor="textArea">COMMENT</label>
-              <textarea
-                id="textArea"
-                name="textArea"
-                placeholder="Add a new comment"
-                minLength="3"
-                maxLength="300"
-              ></textarea>
-            </div>
-
-            <button className="form__btn">
-              <span className="form__btn-icon"></span>
-              <span className="form__btn-name">comment</span>
-            </button>
-          </form>
+          <CommentForm handleCommentAdd={handleCommentAdd} />
         </div>
       </section>
       {comments.length > 0 ? (

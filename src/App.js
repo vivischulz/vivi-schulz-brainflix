@@ -32,7 +32,14 @@ const handleClick = (clickEvnt, videoIdClickedOn) =>{
   setVideoId(videoIdClickedOn);
   setVideos(getbfVideos(videoIdClickedOn));
   setVideoDetails(getbfVideosDetail(videoIdClickedOn));
+  setCommentList(getbfVideosDetail(videoIdClickedOn));
 };
+
+ const [commentList, setCommentList] = useState(videoDetails.comments);
+
+  const handleCommentAdd = (commentData) => {
+    setCommentList([...commentList, { comment: commentData }]);
+  };
 
   return (
     <>
@@ -43,7 +50,10 @@ const handleClick = (clickEvnt, videoIdClickedOn) =>{
         <section className="App__wrap">
           <section className="App__wrap-left">
             <Views video={videoDetails} />
-            <Relatives comments={videoDetails.comments} />
+            <Relatives
+              comments={commentList}
+              handleCommentAdd={handleCommentAdd}
+            />
           </section>
           <SideBar videos={videos} myClick={handleClick} />
         </section>
