@@ -1,6 +1,6 @@
 import "../src/app.scss"
-import Header from './components/header/Header';
-import HeroVideo from "./components/heroVideo/HeroVideo";
+import Header from './components/Header/Header';
+import HeroVideo from './components/HeroVideo/HeroVideo';
 import Views from "./components/views/Views";
 import SideBar from "./components/sidebar/SideBar";
 import Relatives from "./components/relatives/Relatives";
