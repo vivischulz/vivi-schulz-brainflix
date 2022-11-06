@@ -29,6 +29,7 @@ const [videos,setVideos] = useState(getbfVideos(videoId));
 const [videoDetails,setVideoDetails] = useState(getbfVideosDetail(videoId));
 
 const handleClick = (clickEvnt, videoIdClickedOn) =>{
+  clickEvnt.preventDefault();
   setVideoId(videoIdClickedOn);
   setVideos(getbfVideos(videoIdClickedOn));
   setVideoDetails(getbfVideosDetail(videoIdClickedOn));
