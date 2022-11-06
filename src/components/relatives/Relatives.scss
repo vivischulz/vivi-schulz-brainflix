@@ -1,0 +1,228 @@
+@use "../../styles/reset" as *;
+@use "../../styles/colors" as *;
+@use "../../styles/fonts" as *;
+@use "../../styles/mixins" as mx;
+@use "../../styles/partials/icon" as *;
+@use "../../styles/partials/avatar" as *;
+@use "../../styles/partials/button" as *;
+
+
+  .form, .comment {
+    margin:1rem 1.6rem;
+    @extend .font__body;
+    @extend .font__body--md;
+    color: $color-primary;
+    
+    &__comment-count{
+      @extend .font__section-header;
+      margin-top: 1rem;
+    }
+
+    &__btn {
+      @extend .btn;
+      @include mx.flexed(row, flex-start, center);
+      flex-grow: 1;
+      margin: 0;
+      width: 100%;
+    }
+
+    &__btn-icon {
+      margin-left: 0.5rem;
+      @extend.icon;
+      @extend.icon--comment;
+    }
+
+    &__btn-name {
+      flex-grow: 1;
+      text-transform: uppercase;
+    }
+
+    input,
+    textarea {
+      &::placeholder {
+        color: $color-primary;
+      }
+    }
+
+    label {
+      display: none;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 1.2rem;
+      outline: 0;
+      margin-bottom: 1.2rem;
+      border-radius: 4px;
+      color: $color-primary;
+      border: 1px solid $color-outline;
+      background-color: $color-alternative;
+      &:focus {
+        border: 1px solid $color-primary;
+      }
+    }
+
+    textarea {
+      height: 10rem;
+    }
+
+    &__title {
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+      color: $color-secondary;
+      @extend .font__section-header;
+    }
+
+    &__section {
+      @include mx.flexed(row, flex-start, flex-start);
+      margin-top: 1.6rem;
+      border-bottom: 1px solid $color-outline;
+      padding-bottom: 1.6rem;
+
+    }
+
+    &__form-image {
+      background-image: url(../../assets/images/Mohan-muruge.jpg);
+      width: 100%;
+      width: 3.6rem;
+      height: 3.6rem;
+      border-radius: 50%;
+      background-size: cover;
+      margin-top: 1.6rem;
+      margin-right: 1.6rem;
+      flex: 0 0 auto;
+    }
+
+    &__form {
+      width: 100%;
+      flex: 1 1 auto;
+    }
+
+    &--message-block{
+      @include mx.flexed(column, flex-start, flex-start);
+    }
+
+    &__message-wraper {
+      border-radius: 50%;
+      margin-right: 1.6rem;
+    }
+
+    &__message-image {
+      width: 3.6rem;
+      height: 3.6rem;
+      background-color: $color-outline;
+      border-radius: 50%;
+    }
+
+    &__message {
+      line-height: 1.25;
+      flex: 8 1 0;
+    }
+
+    &__message-user {
+      font-weight: 700;
+    }
+
+    &__message-user,
+    &__message-date {
+      display: inline-block;
+    }
+
+    &__message-user,
+    &__message-date,
+    &__message-content {
+      padding-bottom: 0.4rem;
+    }
+
+    &__message-date {
+      color: $color-secondary;
+      position: relative;
+      float: right;
+    }
+
+    &__message-content {
+      color: $color-primary;
+    }
+  }
+
+  @include mx.mq-md {
+    .form,
+    .comment {
+      margin-left: 2.4rem;
+      margin-right:2.4rem;
+
+    &__section-md{
+      padding-bottom:0;
+    }
+
+    
+
+    &__form--left-md{
+      @include mx.flexed(row, space-between,center);
+    }
+
+    &__text-title-wrap{
+      flex-grow:2;
+    }
+
+    &__btn{
+      flex-grow:1;
+      position: relative;
+      top:2px;
+    }
+
+      button {
+        float: right;
+      }
+
+      input[type="text"],
+      textarea {
+        margin-bottom: 1.2rem;
+      }
+
+      textarea {
+        width:95%;
+        max-height: 4rem;
+      }
+
+      &__form {
+        padding-bottom: 1rem;
+      }
+
+      &__form,
+      &__message {
+        flex: 8 1 0;
+      }
+
+      &__form-image,
+      &__message-image {
+        width: 4.8rem;
+        height: 4.8rem;
+      }
+
+
+
+    }
+  }
+
+  @include mx.mq-lg {
+    .form,
+    .comment {
+      margin-left: 2.4rem;
+      margin-right:0;
+
+       &__comment-count{
+      margin-top: 3.6rem;
+    }
+
+
+      &__btn{
+        margin-right: 2.4rem;
+      }
+
+      &__message{
+        margin-right:2.4rem;
+      }
+    }
+  }

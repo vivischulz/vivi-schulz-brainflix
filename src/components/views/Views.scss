@@ -1,0 +1,133 @@
+@use "../../styles/reset" as *;
+@use "../../styles/colors" as *;
+@use "../../styles/fonts" as *;
+@use "../../styles/mixins" as mx;
+@use "../../styles/partials/icon" as *;
+@use "../../styles/partials/button" as *;
+
+.views {
+  margin: 1.6rem;
+  @extend .font__body;
+  color: $color-primary;
+
+  &__title {
+    @extend .page__header;
+    margin-bottom: 1.6rem;
+    font-weight: 700;
+  }
+
+  &__detail {
+    border-top: 1px solid $color-outline;
+    border-bottom: 1px solid $color-outline;
+
+    padding-top: 1.2rem;
+    padding-bottom: 0.6rem;
+    @include mx.flexed(row, flex-start, center);
+  }
+
+  &__author {
+    @extend .font__section-header;
+    margin-right: 1rem;
+    position: relative;
+    top: -5px;
+    margin-bottom: 0.6rem;
+  }
+
+  &__detail--left {
+    flex-grow: 1;
+  }
+
+  &__detail--right {
+    flex-grow: 1;
+  }
+
+  &__date,
+  &__views,
+  &__likes {
+    color: $color-secondary;
+    margin-right: 1rem;
+  }
+
+  &__views {
+    margin-bottom: 0.4rem;
+  }
+
+  &__word {
+    margin-left: 1rem;
+    position: relative;
+    top: -7px;
+    display: inline-block;
+  }
+
+  &__icon-views {
+    @extend .icon;
+    @extend .icon--views;
+  }
+
+  &__icon-likes {
+    @extend .icon;
+    @extend .icon--likes;
+    width: 1.7rem;
+    margin-left: 0.5rem;
+  }
+
+  &__p{
+    margin-top: 1.6rem;
+    line-height: 1.5;
+    font-weight:400;
+    letter-spacing:0.1rem;
+  }
+}
+
+@include mx.mq-md {
+  .views {
+    margin-left: 2.4rem;
+    margin-right:2.4rem;
+
+    &__title{
+      margin-bottom: 1rem;
+    }
+
+    &__detail {
+      border-top: 0;
+      @include mx.flexed(row, space-between, center);
+      padding-top:0;
+      padding-bottom: 0;
+    }
+
+    &__detail--right {
+      flex-grow: 0;
+    }
+    
+    &__author{
+      margin-right:4rem;
+    }
+
+    &__author,
+    &__date {
+      display: inline-block;
+      position: relative;
+      top: 0;
+    }
+
+    &__views,
+    &__likes {
+      display: inline-block;
+    }
+  }
+}
+
+@include mx.mq-lg {
+  .views {
+  margin-right:0;
+
+   &__p{
+      margin-right: 2.4rem;
+    }
+
+    &__detail{
+      margin-right: 2.4rem;
+    }
+
+  }
+}

@@ -1,0 +1,123 @@
+@use "../reset" as *;
+@use "../colors" as *;
+@use "../fonts" as *;
+@use "../mixins" as mx;
+
+/*-------------logo---------*/
+
+.logo{
+    background-image: url(../../assets/images/BrainFlix-logo.svg);
+    width:100%;
+
+    height:2.5rem;
+    max-width:12rem;
+
+    background-size: cover;
+
+    margin:1.6rem;
+    // box-sizing: content-box;
+    cursor: pointer;
+    color: $color-active;
+}
+
+
+
+.icon{
+    width:100%;
+    max-width: 2.4rem;
+    max-height: 2.4rem;
+    cursor: pointer;
+
+    width:2rem;
+    height:2rem;
+    display: inline-block;
+}
+
+.icon--search{
+    background-image: url(../../assets/images/icons/search.svg);
+    background-size: cover;
+}
+
+.icon--views{
+    background-image: url(../../assets/images/icons/views.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    position:relative;
+    top:1.5px;
+    margin-left:0.5rem;
+}
+
+.icon--likes{
+    background-image: url(../../assets/images/icons/likes.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.icon--upload{
+    background-image: url(../../assets/images/icons/upload.svg);
+    background-size: contain;
+}
+
+.icon--comment{
+    background-image: url(../../assets/images/icons/add_comment.svg);
+    background-size:contain;
+}
+
+.icon--close_fullscreen{
+    background-image: url(../../assets/images/icons/close_fullscreen.svg);
+    background-size:contain;
+}
+
+.icon--fullscreen{
+    background-image: url(../../assets/images/icons/fullscreen.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.icon--pause{
+    background-image: url(../../assets/images/icons/pause.svg);
+    background-size: contain;
+}
+
+.icon--play{
+    background-image: url(../../assets/images/icons/play.svg);
+    background-size: contain;
+}
+
+.icon--publish{
+    background-image: url(../../assets/images/icons/publish.svg);
+    background-size: contain;
+}
+
+.icon--publish{
+    background-image: url(../../assets/images/icons/scrub.svg);
+    background-size: contain;
+}
+
+.icon--volume_off{
+    background-image: url(../../assets/images/icons/volume_off.svg);
+    background-size: contain;
+}
+
+.icon--volumn_up{
+    background-image: url(../../assets/images/icons/volume_up.svg);
+    background-size:contain;
+}
+
+.icon--container{
+
+    height:2rem;
+    @include mx.flexed(inline-block, center, center);
+    padding: 0.6rem;
+    &::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.5;
+    background-color: $color-video;
+     }
+}
+
