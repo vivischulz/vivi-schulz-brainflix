@@ -12,13 +12,14 @@ export default function Relatives({ comments }) {
             <div className="form__text-title-wrap">
               <h2 className="form__title">Join the Conversation</h2>
               <label htmlFor="textArea">COMMENT</label>
-              <textarea
+              <input
                 id="textArea"
                 name="textArea"
                 placeholder="Add a new comment"
                 minLength="3"
                 maxLength="300"
-              ></textarea>
+                className="form__textarea"
+              ></input>
             </div>
 
             <button className="form__btn">
