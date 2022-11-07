@@ -1,7 +1,6 @@
 import './SideBar.scss'
 
-export default function SideBar ({videos, myClick}){
-  
+export default function SideBar({ videos, onVideoClick }) {
   return (
     <aside className="sidebar">
       <section>
@@ -10,14 +9,13 @@ export default function SideBar ({videos, myClick}){
         <article className="sidebar__wrap-video">
           {videos.map((video) => (
             <section className="sidebar__wrap-word" key={video.id}>
-              
-                <video
-                  control="controls"
-                  poster={video.image}
-                  onClick={(clickEvnt) => myClick(clickEvnt, video.id)}
-                  className="sidebar__nextv"
-                />
-          
+              <video
+                control="controls"
+                poster={video.image}
+                onClick={(clickEvnt) => onVideoClick(clickEvnt, video.id)}
+                className="sidebar__nextv"
+              />
+
               <div className="sidebar__subtitle-wrap">
                 <h3 className="sidebar__subtitle">{video.title}</h3>
                 <p className="sidebar__author">{video.channel}</p>
