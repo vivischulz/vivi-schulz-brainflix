@@ -1,12 +1,16 @@
-import './Header.scss'
+import "./Header.scss"
+import { Link } from "react-router-dom";
 
 
-const Header =  () => {
+export default function Header () {
 
     return (
       <>
         <section className="header">
-        <div className="header__logo">BrainFlix</div>
+  
+        <Link to="/">
+            <div className="header__logo" href="/">BrainFlix</div>
+        </Link>
 
           {/*---search group---*/}
           <section className="header__search-wrap">
@@ -24,10 +28,14 @@ const Header =  () => {
                 <div className="header__avatar1"></div>
               </div>
               {/*---button group---*/}
-              <button className="header__btn">
-                <span className="header__btn-icon"></span>
-                <span className="header__btn-name">Upload</span>
-              </button>
+             
+                <Link to="upload">
+                  <button className="header__btn">
+                    <span className="header__btn-icon"></span>
+                    <span className="header__btn-name">Upload</span>
+                  </button>
+                </Link>
+            
               <div className="header__avatar2"></div>
           </section>
         </section>
@@ -36,4 +44,3 @@ const Header =  () => {
 
 }
 
-export default Header;

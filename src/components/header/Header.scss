@@ -21,6 +21,7 @@
     
     &__search{
         @include mx.flexed(row,flex-start, center);
+        
     }
 
     &__search-group{
@@ -31,6 +32,7 @@
         padding:1rem 2rem;
         flex-grow: 1;
         margin:1rem;
+    
         }
     
     &__search-icon{
@@ -61,6 +63,7 @@
     &__avatar2{
         @extend .avatar;
        display: none;
+      
     }
 
     &__btn{
@@ -68,21 +71,18 @@
         width:94%;
         @include mx.flexed(row,flex-start, center);
         flex-grow: 1;
-       
-        
     }
 
     &__btn-icon{
-        margin-left: 1.4rem;
-        @extend.icon;
+        margin-left: 0.6rem;
+        @extend .icon;
         @extend.icon--upload;  
     }
 
     &__btn-name{
-        flex-grow: 1;
         text-transform: uppercase;
-        position:relative;
-       right:1rem;
+        margin:0 auto;
+
     }
 }
 
@@ -93,6 +93,7 @@
     padding-bottom: 0;
     margin:0 auto;
     @include mx.flexed(row, space-between, center);
+
     &__logo{
        width:15rem;
        margin:0;
@@ -102,17 +103,15 @@
 
     &__search-wrap{
     @include mx.flexed(row,flex-end, center);
-    float:right;
-    
+    flex-grow:2;
     }
-
     
-
     &__avatar1{
        display:none;
     }
      &__avatar2{
        display: block;
+       
     }
 
      &__btn-name{
@@ -121,10 +120,24 @@
     }
 
     &__search-group{
-      
+       
         padding:1rem 7rem 1rem 1rem;
     
         }
+
+    &__btn{
+      
+         margin-right: 4.2rem;
+         padding-right:2rem;
+
+    }
+    
+    &__btn-icon{
+        width:2.5rem;
+         
+  
+    }
+
 
      
 
