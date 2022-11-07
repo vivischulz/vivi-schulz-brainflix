@@ -1,12 +1,4 @@
-import "../src/App.scss"
-<<<<<<< HEAD
-import Header from './components/header/Header';
-import HeroVideo from './components/heroVideo/HeroVideo';
-import Views from "./components/views/Views";
-import SideBar from "./components/sidebar/SideBar";
-import Relatives from "./components/relatives/Relatives";
-=======
->>>>>>> dev
+import "../src/App.scss";
 
 import {useState} from 'react';
 import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
