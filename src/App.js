@@ -1,4 +1,4 @@
-import "../src/app.scss"
+import "../src/App.scss"
 import Header from './components/header/Header';
 import HeroVideo from './components/heroVideo/HeroVideo';
 import Views from "./components/views/Views";
