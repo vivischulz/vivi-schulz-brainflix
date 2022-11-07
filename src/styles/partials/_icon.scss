@@ -15,7 +15,6 @@
     background-size: cover;
 
     margin:1.6rem;
-    // box-sizing: content-box;
     cursor: pointer;
     color: $color-active;
 }
@@ -56,6 +55,7 @@
 .icon--upload{
     background-image: url(../../assets/images/icons/upload.svg);
     background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .icon--comment{

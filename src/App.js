@@ -1,15 +1,15 @@
 import "../src/App.scss"
-import Header from './components/header/Header';
-import HeroVideo from './components/heroVideo/HeroVideo';
-import Views from "./components/views/Views";
-import SideBar from "./components/sidebar/SideBar";
-import Relatives from "./components/relatives/Relatives";
 
 import {useState} from 'react';
+import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
+
+import Header from './components/header/Header';
+
+import HomePage from "./pages/home-page/HomePage";
+import UploadPage from "./pages/upload-page/UploadPage";
 
 import bfVideos from "../src/data/videos.json";
 import bfVideoDetails from "../src/data/video-details.json";
-
 
 export default function App() {
 
@@ -39,15 +39,23 @@ const handleClick = (clickEvnt, videoIdClickedOn) =>{
     <>
       <div className="App__block-bg"></div>
       <div className="App">
-        <Header />
-        <HeroVideo video={videoDetails} />
-        <section className="App__wrap">
-          <section className="App__wrap-left">
-            <Views video={videoDetails} />
-            <Relatives comments={videoDetails.comments} />
-          </section>
-          <SideBar videos={videos} myClick={handleClick} />
-        </section>
+        <BrowserRouter>
+          <Header />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <HomePage
+                  videos={videos}
+                  videoDetails={videoDetails}
+                  myClick={handleClick}
+                />
+              }
+            />
+            <Route path="brainFlix" element={<Navigate to="/" />} />
+            <Route path="upload" element={<UploadPage />} />
+          </Routes>
+        </BrowserRouter>
       </div>
       <div className="App__block-bg"></div>
     </>
