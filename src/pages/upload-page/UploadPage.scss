@@ -7,27 +7,38 @@
 
 .upload {
   margin: 0 auto;
-  @extend .font__body;
-  @extend .font__body--md;
   color: $color-primary;
+ padding: 0 2.4rem 2.4rem 2.4rem;
+  border-top: 2px solid $color-outline;
+  width:100%;
 
   &__btn {
     @extend .btn;
     @include mx.flexed(row, flex-start, center);
     flex-grow: 1;
-    margin: 0;
+    margin-top:0.4rem;
     width: 100%;
+
+  &--cancel{
+    background-color:$color-primary-bg;
+    color:$color-active;
+  }
   }
 
   &__btn-icon {
     margin-left: 0.5rem;
     @extend.icon;
-    @extend.icon--comment;
+    @extend.icon--publish;
   }
 
   &__btn-name {
     flex-grow: 1;
     text-transform: uppercase;
+
+    &--with-icon{
+      position: relative;
+      left:-1rem;
+    }
   }
 
   &__textarea {
@@ -53,60 +64,87 @@
 
   &__textarea--more-height {
     height: 10rem;
+    margin-bottom: 2rem;
+      &::placeholder {
+      transform:translateY(-3rem);
+  
+    }
   }
 
-  &__title {
-    letter-spacing: 0.04rem;
+  &__title{
+   @extend .page__header;
+   @extend .page__header--md;
+   margin-bottom: 2rem;
+   margin-top: 2rem;
+   width:100%;
+  }
+
+
+  &__subtitle {
+    @extend .font__label;
+    @extend .font__label--md;
+    letter-spacing: 0.02rem;
     text-transform: uppercase;
+    margin-top: 0.4rem;
     margin-bottom: 0.4rem;
     color: $color-secondary;
   }
 
-  &__form-image {
-    background-image: url(../../assets/images/Mohan-muruge.jpg);
+  &__image {
+    background-image: url(../../assets/images/Upload-video-preview.jpg);
     width: 100%;
-    width: 3.6rem;
-    height: 3.6rem;
+    height:15rem;
     background-size: cover;
-    margin-top: 1.6rem;
-    margin-right: 1.6rem;
+    margin-top: 0.8rem;
+    margin-bottom: 1.4rem;
+    border-radius:4px ;
+    background-position: center;
     flex: 0 0 auto;
-    margin-right: 1.6rem;
   }
 
-  &__form {
-    width: 100%;
-    flex: 1 1 auto;
-  }
 }
 
 @include mx.mq-md {
   .upload {
 
+   &__image{
+    max-width:40%;
+    height:25rem;
+   }
+
     &__section {
-      @include mx.flexed(row, flex-start, flex-start);
-      margin-top: 2.4rem;
+     
+      margin-top: 0;
+      padding-top: 2.4rem;
+       border-top: 1px solid $color-outline;
       border-bottom: 1px solid $color-outline;
-      padding-bottom: 2rem;
+      padding-top: 2.4rem;
     }
 
-    &__thumbnail{
-        flex:1 1 0;
+    &__btn{
+      margin: 0;
+    }
+
+    &__btn-group{
+      @include mx.flexed(row, flex-end, center);
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    &__btn--cancel{
+      order:-1;
     }
 
     &__user-input{
-        flex:2 1 0;
+      margin-bottom:0.6rem;
     }
 
-    &__form-image {
-      width: 4.8rem;
-      height: 4.8rem;
-    }
   }
 }
 
-@include mx.mq-lg {
-  .form {
-    width: 80%;
-  }
-}
+// @include mx.mq-lg {
+//   .upload {
+
+   
+//   }
+// }
