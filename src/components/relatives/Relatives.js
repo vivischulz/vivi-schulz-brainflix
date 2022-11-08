@@ -1,11 +1,24 @@
 import "./Relatives.scss";
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import {getDate} from '../../components/views/Views';
 
-export default function Relatives({ comments }) {
+export default function Relatives({ searchVideoByVideoId, videoDetails }) {
+      const {videoId} = useParams();
+      // const {id, name, timestamp, comment} = videoDetails;
+
+      useEffect(()=>{
+        searchVideoByVideoId(videoId);
+      }, [videoId]);
+      
+     console.log(videoDetails);
   return (
     <>
       <section className="form">
-        <p className="form__comment-count"> {comments.length} Comments</p>
+        <p className="form__comment-count">
+          {" "}
+          {Object.keys(videoDetails).length} Comments
+        </p>
         <div className="form__section form__section-md">
           <div className="form__form-image"></div>
           <form className="form__form form__form--left-md">
@@ -29,9 +42,9 @@ export default function Relatives({ comments }) {
           </form>
         </div>
       </section>
-      {comments.length > 0 ? (
+      {Object.keys(videoDetails).length > 0 ? (
         <section className="comment comment--message-block">
-          {comments.map((comment) => (
+          {videoDetails.map((comment) => (
             <article className="comment__section" key={comment.id}>
               <div className="comment__message-wraper">
                 <div className="comment__message-image"></div>

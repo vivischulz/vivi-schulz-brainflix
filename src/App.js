@@ -1,46 +1,81 @@
 import "../src/App.scss"
 
-import {useState} from 'react';
 import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 import Header from './components/header/Header';
 
 import HomePage from "./pages/home-page/HomePage";
 import UploadPage from "./pages/upload-page/UploadPage";
 
-import bfVideos from "../src/data/videos.json";
-import bfVideoDetails from "../src/data/video-details.json";
+// const SEARCH_URL = `https://project-2-api.herokuapp.com/videos?apiKey=${process.env.REACT_APP_API_KEY}`;
+
+const SEARCH_URL = `https://project-2-api.herokuapp.com/videos?api_key={{BRAINFLIX__KEY}}`;
+const searchByVideoId = (videoId) => `${SEARCH_URL}&i=${videoId}`;
+const searchByVideoName = (searchKeyword) => `${SEARCH_URL}&s=${searchKeyword}`;
+
 
 export default function App() {
+const [videos, setVideos] = useState([]);
+const [videoDetails, setVideoDetails] = useState({});
+const [defaultSearch] = useState("MBX");
+const [defaultIDSearch] = useState("84e96018-4022-434e-80bf-000ce4cd12b8");
 
-  
-  const getbfVideos = (videoId) => {
-    return bfVideos.filter((video)=> video.id !== videoId)
+const handleSearchVideos = async (event) => {
+    event.preventDefault();
+    const searchKeyword = event.target.searchVideoInput.value;
+    const { data } = await axios.get(searchByVideoName(searchKeyword));
+    setVideos(data);
+    setVideoDetails({});
+    event.target.reset();
   };
-  const getbfVideosDetail = (videoId) => {
-    return bfVideoDetails.find(
-      (video) => video.id === videoId
-      );
-    }
- 
 
-const [videoId,setVideoId] = useState(bfVideos[0].id);
-const [videos,setVideos] = useState(getbfVideos(videoId));
-const [videoDetails,setVideoDetails] = useState(getbfVideosDetail(videoId));
 
-const handleClick = (clickEvnt, videoIdClickedOn) =>{
-  clickEvnt.preventDefault();
-  setVideoId(videoIdClickedOn);
-  setVideos(getbfVideos(videoIdClickedOn));
-  setVideoDetails(getbfVideosDetail(videoIdClickedOn));
+
+const searchVideoByVideoId = async (videoId) =>{
+  const {data} = await axios.get(searchByVideoId(videoId));
+  setVideoDetails(data);
 };
+
+console.log("videos", videos);
+console.log("videoDetails", videoDetails);
+
+useEffect(() => {
+  const fetchData = async () =>{
+    try{
+    const {data} = await axios.get(searchByVideoName(defaultSearch));
+    setVideos(data);
+          
+    }catch(error){
+      console.log('Error',error);
+    }
+        };
+
+  fetchData();
+},[defaultSearch]);
+
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const { data } = await axios.get(searchByVideoId(defaultIDSearch));
+      setVideos(data);
+    } catch (error) {
+      console.log("Error", error);
+    }
+  };
+
+  fetchData();
+}, [defaultIDSearch]);
+
+
 
   return (
     <>
       <div className="App__block-bg"></div>
       <div className="App">
         <BrowserRouter>
-          <Header />
+          <Header searchVideos={handleSearchVideos} />
           <Routes>
             <Route
               path="/"
@@ -48,12 +83,32 @@ const handleClick = (clickEvnt, videoIdClickedOn) =>{
                 <HomePage
                   videos={videos}
                   videoDetails={videoDetails}
-                  myClick={handleClick}
+                  searchVideoByVideoId={searchVideoByVideoId}
                 />
               }
             />
             <Route path="brainFlix" element={<Navigate to="/" />} />
             <Route path="upload" element={<UploadPage />} />
+            <Route
+              path="videos"
+              element={
+                <HomePage
+                  videos={videos}
+                  videoDetails={videoDetails}
+                  searchVideoByVideoId={searchVideoByVideoId}
+                />
+              }
+            />
+            <Route
+              path="videos/:videoId"
+              element={
+                <HomePage
+                  videos={videos}
+                  videoDetails={videoDetails}
+                  searchVideoByVideoId={searchVideoByVideoId}
+                />
+              }
+            />
           </Routes>
         </BrowserRouter>
       </div>
