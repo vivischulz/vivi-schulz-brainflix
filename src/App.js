@@ -11,40 +11,37 @@ import UploadPage from "./pages/upload-page/UploadPage";
 
 const SEARCH_URL = `https://project-2-api.herokuapp.com/videos?api_key={{BRAINFLIX__KEY}}`;
 
-const searchByVideoId = (videoId) => `${SEARCH_URL}&i=${videoId}`;
+// const searchByVideoId = (videoId) => `${SEARCH_URL}&i=${videoId}`;
 const searchByVideoName = (searchKeyword) => `${SEARCH_URL}&s=${searchKeyword}`;
 
 
 export default function App() {
 
 const [videos, setVideos] = useState([]);
-const [videoDetails, setVideoDetails] = useState({});
+// const [videoDetails, setVideoDetails] = useState({});
 const [defaultSearch] = useState("BMX");
 
 
-const handleSearchVideos = async (event) => {
-    event.preventDefault();
-    const searchKeyword = event.target.search.value;
-    const { data } = await axios.get(searchByVideoName(searchKeyword));
-    setVideos(data);
-    setVideoDetails({});
-    event.target.reset();
-  };
+// const handleSearchVideos = async (event) => {
+//     event.preventDefault();
+//     const searchKeyword = event.target.search.value;
+//     const { data } = await axios.get(searchByVideoName(searchKeyword));
+//     setVideos(data);
+//     setVideoDetails({});
+//     event.target.reset();
+//   };
 
 
-const searchVideoByVideoId = async (videoId) =>{
-  const {data} = await axios.get(searchByVideoId(videoId));
-  setVideoDetails(data);
-};
-
-
+// const searchVideoByVideoId = async (videoId) =>{
+//   const {data} = await axios.get(searchByVideoId(videoId));
+//   setVideoDetails(data);
+// };
 
 useEffect(() => {
   const fetchData = async () =>{
     try{
     const {data} = await axios.get(searchByVideoName(defaultSearch));
     setVideos(data);
-           console.log(data);
     }catch(error){
       console.log('Error',error);
     }
@@ -60,7 +57,7 @@ useEffect(() => {
   
       <div className="App">
         <BrowserRouter>
-          <Header searchVideos={handleSearchVideos} />
+          <Header />
           <Routes>
             <Route
               path="/"
