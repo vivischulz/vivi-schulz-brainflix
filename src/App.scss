@@ -1,14 +1,10 @@
 @use "./styles/mixins" as mx;
 @use "./styles/colors" as *;
 
+
+
 @include mx.mq-lg {
   .App {
-    
-    &__block-bg{
-    background-color:$color-secondary;
-    width:100%;
-    height:7rem; 
-    }
 
     &__wrap {
       @include mx.flexed(row, space-between, flex-start);

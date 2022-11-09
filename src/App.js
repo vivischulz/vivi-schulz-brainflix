@@ -34,7 +34,6 @@ const handleSearchVideos = async (event) => {
   };
 
 
-
 const searchVideoByVideoId = async (videoId) =>{
   const {data} = await axios.get(searchByVideoId(videoId));
   setVideoDetails(data);
@@ -58,7 +57,7 @@ useEffect(() => {
 
   return (
     <>
-      <div className="App__block-bg"></div>
+  
       <div className="App">
         <BrowserRouter>
           <Header searchVideos={handleSearchVideos} />
@@ -68,9 +67,7 @@ useEffect(() => {
               element={
                 <HomePage
                   videos={videos}
-                  videoDetails={videoDetails}
-                  searchVideoByVideoId={searchVideoByVideoId}
-                  searchByVideoName={searchByVideoName}
+              
                 />
               }
             />
@@ -81,9 +78,7 @@ useEffect(() => {
               element={
                 <HomePage
                   videos={videos}
-                  videoDetails={videoDetails}
-                  searchVideoByVideoId={searchVideoByVideoId}
-                  searchByVideoName={searchByVideoName}
+                
                 />
               }
             />
@@ -92,16 +87,14 @@ useEffect(() => {
               element={
                 <HomePage
                   videos={videos}
-                  videoDetails={videoDetails}
-                  searchVideoByVideoId={searchVideoByVideoId}
-                  searchByVideoName={searchByVideoName}
+                 
                 />
               }
             />
           </Routes>
         </BrowserRouter>
       </div>
-      <div className="App__block-bg"></div>
+  
     </>
   );
 }
