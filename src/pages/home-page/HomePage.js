@@ -3,14 +3,16 @@ import Views from '../../components/views/Views';
 import Relatives from '../../components/relatives/Relatives';
 import SideBar from '../../components/sidebar/SideBar';
 
-export default function HomePage({videos, videoDetails, searchVideoByVideoId }) {
-
+export default function HomePage({
+  videos,
+  videoDetails,
+  searchVideoByVideoId,
+  searchByVideoName
+}) {
   return (
     <>
-      <HeroVideo
-        videos={videos}
-        searchVideoByVideoId={searchVideoByVideoId}
-      />
+      <HeroVideo videos={videos} 
+      searchByVideoName={searchByVideoName} />
       <section className="App__wrap">
         <section className="App__wrap-left">
           <Views video={videoDetails} />
