@@ -2,8 +2,8 @@ import "./Header.scss"
 import { Link } from "react-router-dom";
 
 
-export default function Header () {
-      
+export default function Header ({searchVideos}) {
+   
     return (
       <>
         <section className="header">
@@ -14,12 +14,12 @@ export default function Header () {
           </Link>
 
           {/*---search group---*/}
-          <section className="header__search-wrap">
+          <form onSubmit={searchVideos} className="header__search-wrap">
             <div className="header__search">
               <div className="header__search-group">
                 <span className="header__search-icon"></span>
                 <input
-                  type="text"
+                  type="search"
                   className="header__search-name"
                   placeholder="Search"
                   name="search"
@@ -40,7 +40,7 @@ export default function Header () {
             </Link>
 
             <div className="header__avatar2"></div>
-          </section>
+          </form>
         </section>
       </>
     );

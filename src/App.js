@@ -9,8 +9,6 @@ import Header from './components/header/Header';
 import HomePage from "./pages/home-page/HomePage";
 import UploadPage from "./pages/upload-page/UploadPage";
 
-// const SEARCH_URL = `https://project-2-api.herokuapp.com/videos?apiKey=${process.env.REACT_APP_API_KEY}`;
-
 const SEARCH_URL = `https://project-2-api.herokuapp.com/videos?api_key={{BRAINFLIX__KEY}}`;
 
 const searchByVideoId = (videoId) => `${SEARCH_URL}&i=${videoId}`;
@@ -21,12 +19,12 @@ export default function App() {
 
 const [videos, setVideos] = useState([]);
 const [videoDetails, setVideoDetails] = useState({});
-const [defaultSearch] = useState("MBX");
+const [defaultSearch] = useState("BMX");
 
 
 const handleSearchVideos = async (event) => {
     event.preventDefault();
-    const searchKeyword = event.target.searchVideoInput.value;
+    const searchKeyword = event.target.search.value;
     const { data } = await axios.get(searchByVideoName(searchKeyword));
     setVideos(data);
     setVideoDetails({});
@@ -46,13 +44,15 @@ useEffect(() => {
     try{
     const {data} = await axios.get(searchByVideoName(defaultSearch));
     setVideos(data);
-          
+           console.log(data);
     }catch(error){
       console.log('Error',error);
     }
         };
 
   fetchData();
+
+ 
 },[defaultSearch]);
 
   return (

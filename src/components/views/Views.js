@@ -25,7 +25,6 @@ export default function Views(){
         )
         .then((response) => {
           setSelectedVideo(response.data);
-          console.log(`default video`, response.data);
         })
         .catch((error) => console.log(error));
     }, []);
@@ -37,7 +36,6 @@ export default function Views(){
         )
         .then((response) => {
           setSelectedVideo(response.data);
-          console.log(response.data);
         })
         .catch((error) => console.log(error));
     }, [params]);
