@@ -1,40 +1,47 @@
 import "./HeroVideo.scss";
+import React, {useState, useEffect} from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
-export default function HeroVideo ({video}){
+export default function HeroVideo() {
+ const [selectedVideo, setSelectedVideo] = useState({});
+ const params = useParams();
 
-  const {image} = video;
+   useEffect(() => {
+     axios
+       .get(
+         `https://project-2-api.herokuapp.com/videos/84e96018-4022-434e-80bf-000ce4cd12b8?api_key={{BRAINFLIX__KEY}}`
+       )
+       .then((response) => {
+         setSelectedVideo(response.data);
+       })
+       .catch((error) => console.log(error));
+   }, [ ]);
+
+  useEffect(() => {
+      axios
+        .get(
+          `https://project-2-api.herokuapp.com/videos/${params.videoId}?api_key={{BRAINFLIX__KEY}}`
+        )
+        .then((response) => {
+          setSelectedVideo(response.data);
+        })
+        .catch((error) => console.log(error));
+    
+  }, [params]);
 
   return (
-      <div className="hv">
-        <div className="hv__video-wrap">
-      
-          <video
-            control="controls"
-            src="true"
-            controls
-            poster={image}
-            className="hv__video"
-          />
-    
-          {/* 
-        <section className="hv--control-wrap">
-          <div className="hv__icon-play--container">
-            <span className="hv__icon-play"></span>
-          </div>
-
-          <div className="hv__control-bar--container">
-            <div className="hv__control-on-top"></div>
-            <span className="hv__control-time">0:00/4:01</span>
-          </div>
-
-          <div className="hv__screen-value--container">
-            <div className="hv__fullscreen"></div>
-            <div className="hv__valueup"></div>
-          </div>
-        </section> */}
-        </div>
+    <div className="hv">
+      <div className="hv__video-wrap">
+        <video
+          control="controls"
+          src="true"
+          controls
+          poster={selectedVideo.image}
+          className="hv__video"
+        />
       </div>
-  
+    </div>
   );
 }
 

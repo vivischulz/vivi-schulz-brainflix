@@ -82,6 +82,11 @@
     &__btn-name{
         text-transform: uppercase;
         margin:0 auto;
+        
+    &--with-icon{
+      position: relative;
+      left:0rem;
+    }
 
     }
 }

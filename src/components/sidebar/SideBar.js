@@ -1,6 +1,8 @@
 import './SideBar.scss'
+import {Link} from "react-router-dom";
 
-export default function SideBar({ videos, onVideoClick }) {
+export default function SideBar({videos}) {
+
   return (
     <aside className="sidebar">
       <section>
@@ -9,13 +11,13 @@ export default function SideBar({ videos, onVideoClick }) {
         <article className="sidebar__wrap-video">
           {videos.map((video) => (
             <section className="sidebar__wrap-word" key={video.id}>
-              <video
-                control="controls"
-                poster={video.image}
-                onClick={(clickEvnt) => onVideoClick(clickEvnt, video.id)}
-                className="sidebar__nextv"
-              />
-
+              <Link to = {`/videos/${video.id}`}>
+                <video
+                  control="controls"
+                  poster={video.image}
+                  className="sidebar__nextv"
+                />
+              </Link>
               <div className="sidebar__subtitle-wrap">
                 <h3 className="sidebar__subtitle">{video.title}</h3>
                 <p className="sidebar__author">{video.channel}</p>
