@@ -1,63 +1,100 @@
 import "../src/App.scss"
 
-import {useState} from 'react';
 import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 import Header from './components/header/Header';
 
 import HomePage from "./pages/home-page/HomePage";
 import UploadPage from "./pages/upload-page/UploadPage";
 
-import bfVideos from "../src/data/videos.json";
-import bfVideoDetails from "../src/data/video-details.json";
+const SEARCH_URL = `https://project-2-api.herokuapp.com/videos?api_key={{BRAINFLIX__KEY}}`;
+
+const searchByVideoId = (videoId) => `${SEARCH_URL}&i=${videoId}`;
+const searchByVideoName = (searchKeyword) => `${SEARCH_URL}&s=${searchKeyword}`;
+
 
 export default function App() {
 
-  
-  const getbfVideos = (videoId) => {
-    return bfVideos.filter((video)=> video.id !== videoId)
+const [videos, setVideos] = useState([]);
+const [videoDetails, setVideoDetails] = useState({});
+const [defaultSearch] = useState("BMX");
+
+
+const handleSearchVideos = async (event) => {
+    event.preventDefault();
+    const searchKeyword = event.target.search.value;
+    const { data } = await axios.get(searchByVideoName(searchKeyword));
+    setVideos(data);
+    setVideoDetails({});
+    event.target.reset();
   };
-  const getbfVideosDetail = (videoId) => {
-    return bfVideoDetails.find(
-      (video) => video.id === videoId
-      );
-    }
- 
 
-const [videoId,setVideoId] = useState(bfVideos[0].id);
-const [videos,setVideos] = useState(getbfVideos(videoId));
-const [videoDetails,setVideoDetails] = useState(getbfVideosDetail(videoId));
 
-const handleClick = (clickEvnt, videoIdClickedOn) =>{
-  clickEvnt.preventDefault();
-  setVideoId(videoIdClickedOn);
-  setVideos(getbfVideos(videoIdClickedOn));
-  setVideoDetails(getbfVideosDetail(videoIdClickedOn));
+const searchVideoByVideoId = async (videoId) =>{
+  const {data} = await axios.get(searchByVideoId(videoId));
+  setVideoDetails(data);
 };
+
+
+
+useEffect(() => {
+  const fetchData = async () =>{
+    try{
+    const {data} = await axios.get(searchByVideoName(defaultSearch));
+    setVideos(data);
+           console.log(data);
+    }catch(error){
+      console.log('Error',error);
+    }
+        };
+
+  fetchData();
+
+ 
+},[defaultSearch]);
 
   return (
     <>
-      <div className="App__block-bg"></div>
+  
       <div className="App">
         <BrowserRouter>
-          <Header />
+          <Header searchVideos={handleSearchVideos} />
           <Routes>
             <Route
               path="/"
               element={
                 <HomePage
                   videos={videos}
-                  videoDetails={videoDetails}
-                  myClick={handleClick}
+              
                 />
               }
             />
             <Route path="brainFlix" element={<Navigate to="/" />} />
             <Route path="upload" element={<UploadPage />} />
+            <Route
+              path="videos"
+              element={
+                <HomePage
+                  videos={videos}
+                
+                />
+              }
+            />
+            <Route
+              path="videos/:videoId"
+              element={
+                <HomePage
+                  videos={videos}
+                 
+                />
+              }
+            />
           </Routes>
         </BrowserRouter>
       </div>
-      <div className="App__block-bg"></div>
+  
     </>
   );
 }
