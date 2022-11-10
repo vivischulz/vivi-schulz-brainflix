@@ -1,13 +1,18 @@
 import "./UploadPage.scss";
 import {useNavigate} from "react-router-dom";
+import React from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 export default function UploadPage() {
   const navigate = useNavigate();
-
+ 
    const handleSubmit = (event) =>{
     event.preventDefault();
-    alert('Your video is submitted!');
-    navigate('/');  
+    toast.success("Your video is submitted!");
+    setTimeout(() => navigate("/"), 5000);
+  
   }
 
   return (
@@ -50,10 +55,7 @@ export default function UploadPage() {
             </section>
           </section>
           <section className="upload__btn-group ">
-            <button
-              className="upload__btn upload__btn--publish "
-              type="submit"
-            >
+            <button className="upload__btn upload__btn--publish " type="submit">
               <span className="upload__btn-icon"></span>
               <span className="upload__btn-name upload__btn-name--with-icon">
                 Publish
@@ -65,6 +67,7 @@ export default function UploadPage() {
           </section>
         </form>
       </section>
+      <ToastContainer />
     </>
   );
 }
