@@ -1,38 +1,9 @@
 import "./Relatives.scss";
-import React, {useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import axios from "axios";
 import {getDate} from '../../components/views/Views';
 
-export default function Relatives() {
-    
-  const [selectedVideo, setSelectedVideo] = useState({});
-  const params = useParams();
+export default function Relatives({selectedVideo}) {
   const { comments } = selectedVideo;
 
-
-     useEffect(() => {
-       axios
-         .get(
-           `https://project-2-api.herokuapp.com/videos/84e96018-4022-434e-80bf-000ce4cd12b8?api_key={{BRAINFLIX__KEY}}`
-         )
-         .then((response) => {
-           setSelectedVideo(response.data);
-         })
-         .catch((error) => console.log(error));
-     }, []);
-
-     useEffect(() => {
-       axios
-         .get(
-           `https://project-2-api.herokuapp.com/videos/${params.videoId}?api_key={{BRAINFLIX__KEY}}`
-         )
-         .then((response) => {
-           setSelectedVideo(response.data);
-         })
-         .catch((error) => console.log(error));
-     }, [params]);
-      
   return (
     <>
       <section className="form">
