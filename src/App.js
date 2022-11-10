@@ -16,7 +16,6 @@ export default function App() {
 
 const [videos, setVideos] = useState([]);
 
-
 useEffect(() => {
   const fetchData = async () => {
     try {
