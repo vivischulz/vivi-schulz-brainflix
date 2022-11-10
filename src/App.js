@@ -1,4 +1,4 @@
-import "../src/App.scss"
+import "../src/App.scss";
 
 import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 import { useEffect, useState } from "react";
