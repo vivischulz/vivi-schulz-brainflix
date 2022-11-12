@@ -1,8 +1,15 @@
 import "./Relatives.scss";
-import {getDate} from '../../components/views/Views';
+import CommentForm from "../commentForm/CommentForm";
+import { getDate } from "../../components/views/Views";
+
 
 export default function Relatives({selectedVideo}) {
   const { comments } = selectedVideo;
+
+  const addComment = (text) => {
+    console.log(text);
+  };
+
 
   return (
     <>
@@ -10,25 +17,7 @@ export default function Relatives({selectedVideo}) {
         <p className="form__comment-count">{comments?.length} Comments</p>
         <div className="form__section form__section-md">
           <div className="form__form-image"></div>
-          <form className="form__form form__form--left-md">
-            <div className="form__text-title-wrap">
-              <h2 className="form__title">Join the Conversation</h2>
-              <label htmlFor="textArea">COMMENT</label>
-              <input
-                id="textArea"
-                name="textArea"
-                placeholder="Add a new comment"
-                minLength="3"
-                maxLength="300"
-                className="form__textarea"
-              ></input>
-            </div>
-
-            <button className="form__btn">
-              <span className="form__btn-icon"></span>
-              <span className="form__btn-name">comment</span>
-            </button>
-          </form>
+          <CommentForm submitLabel="Write" handleSubmit={addComment} />
         </div>
       </section>
       {comments?.length > 0 ? (
