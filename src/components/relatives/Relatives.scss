@@ -98,7 +98,6 @@
 
     &--message-block{
       @include mx.flexed(column, flex-start, flex-start);
-    
     }
 
     &__message-wraper {
@@ -149,12 +148,11 @@
     .comment {
       margin-left: 2.4rem;
       margin-right:2.4rem;
-
+    
+      margin-bottom: 0;
     &__section-md{
       padding-bottom:0;
     }
-
-    
 
     &__form--left-md{
       @include mx.flexed(row, space-between,center);
@@ -194,7 +192,9 @@
         height: 4.8rem;
       }
 
-
+    &__message{
+      margin-right: 2.4rem;
+    }
 
     }
   }
@@ -209,13 +209,15 @@
       margin-top: 3.6rem;
     }
 
-
       &__btn{
         margin-right: 2.4rem;
       }
 
-      &__message{
-        margin-right:2.4rem;
-      }
+    
+      @include mx.flexed(column, flex-start, flex-start);
+      border-right:1px solid $color-outline;
+      margin-top:0;
+    
+
     }
   }

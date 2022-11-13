@@ -35,13 +35,18 @@ export default function HomePage({ videos }) {
     }
   }, [params]);
 
+    const selectedVideoId = selectedVideo.id;
+
   return (
     <>
       <HeroVideo selectedVideo={selectedVideo} />
       <section className="App__wrap">
         <section className="App__wrap-left">
           <Views selectedVideo={selectedVideo} />
-          <Relatives selectedVideo={selectedVideo} />
+          <Relatives
+            selectedVideo={selectedVideo}
+            selectedVideoId={selectedVideoId}
+          />
         </section>
         <SideBar videos={videos} />
       </section>

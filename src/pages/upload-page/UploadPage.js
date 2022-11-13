@@ -8,10 +8,17 @@ import "react-toastify/dist/ReactToastify.css";
 export default function UploadPage() {
   const navigate = useNavigate();
   const formRef = useRef();
+  
+  const successToast = () =>{
+    toast("Your video is submitted", {
+      draggable: true,
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
 
    const handleSubmit_submit = (event) =>{
     event.preventDefault();
-    toast.success("Your video is submitted!");
+    successToast();
     setTimeout(() => navigate("/"), 5000);
     formRef.current.reset();
   }

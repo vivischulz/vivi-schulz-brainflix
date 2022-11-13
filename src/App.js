@@ -22,7 +22,7 @@ useEffect(() => {
       const { data } = await axios.get(VIDEOS_URL);
       setVideos(data);
     } catch (error) {
-      console.log("Error", error);
+      console.log("Error", error)
     }
   };
   fetchData();
