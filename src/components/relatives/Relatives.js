@@ -1,31 +1,26 @@
 import "./Relatives.scss";
 import {useState, useEffect} from "react";
 import CommentForm from "../commentForm/CommentForm";
-import { getDate } from "../../components/views/Views";
+import Comment from "../comment/Comment";
 import axios from "axios";
 
 export default function Relatives({ selectedVideo, selectedVideoId }) {
   const { comments } = selectedVideo;
-  
- const [updatedComments, setUpdatedComments] = useState({});
-  // console.log(updatedComments);
+  const [updatedComments, setUpdatedComments] = useState({});
 
   const SELECTED_VIDEO_ID_URL = `https://project-2-api.herokuapp.com/videos/${selectedVideoId}/comments?api_key={{BRAINFLIX__KEY}}`;
   
   const addComment = (text) => {
 
     const commentInput = {
-      name: selectedVideo.title,
+      name: 'Vivi',
       comment: text,
     };
 
     if (commentInput !== "") {
-
-      axios.post(SELECTED_VIDEO_ID_URL, commentInput).then(({data}) => {
+       axios.post(SELECTED_VIDEO_ID_URL, commentInput).then(({data}) => {
        setUpdatedComments(data);
        comments.push(data);
-       console.log("updatedComments", updatedComments);
-       console.log("comments", comments);
       });
     }
   };
@@ -34,15 +29,11 @@ export default function Relatives({ selectedVideo, selectedVideoId }) {
   useEffect(() => {
     if (!updatedComments){return}
     setUpdatedComments(updatedComments);
-    console.log("updatedComments-useEffect",updatedComments);
-    
-    console.log("comments-useEffect", comments);
-    // return comments.sort(
-    //   (a, b) =>
-    //     (a.timestamp - b.timestamp)
-    // );
     },[updatedComments,comments]);
 
+   const getSortTime = (timestamp) => {
+    return comments.sort((a, b) => b.timestamp - a.timestamp);
+   };
 
   return (
     <>
@@ -56,18 +47,11 @@ export default function Relatives({ selectedVideo, selectedVideoId }) {
       {comments?.length > 0 ? (
         <section className="comment comment--message-block">
           {comments?.map((comment) => (
-            <article className="comment__section" key={comment?.id}>
-              <div className="comment__message-wraper">
-                <div className="comment__message-image"></div>
-              </div>
-              <section className="comment__message">
-                <p className="comment__message-user">{comment?.name}</p>
-                <p className="comment__message-date">
-                  {getDate(comment?.timestamp)}
-                </p>
-                <p className="comment__message-content">{comment?.comment}</p>
-              </section>
-            </article>
+            <Comment
+              comment={comment}
+              key={comment.id}
+              sortTime={getSortTime(comment.timestamp)}
+            />
           ))}
         </section>
       ) : (

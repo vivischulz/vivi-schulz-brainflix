@@ -6,7 +6,10 @@
 @use "../../styles/partials/button" as *;
 
 .views {
-  margin: 1.6rem;
+
+  margin-left: 1.6rem;
+  padding-top:1.6rem;
+  padding-bottom:1.6rem;
   @extend .font__body;
   color: $color-primary;
 
@@ -17,6 +20,7 @@
   }
 
   &__detail {
+    
     border-top: 1px solid $color-outline;
     border-bottom: 1px solid $color-outline;
 
@@ -119,15 +123,15 @@
 
 @include mx.mq-lg {
   .views {
-  
-  width:100%;
-
+  width:96.7%;
+ 
+ border-right:1px solid $color-outline;
    &__p{
-      margin-right: 2.4rem;
+      padding-right: 2.4rem;
     }
 
     &__detail{
-      margin-right: 2.4rem;
+      padding-right: 2.4rem;
     }
 
   }
