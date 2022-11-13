@@ -10,17 +10,15 @@ export default function UploadPage() {
   const formRef = useRef();
   
   const successToast = () =>{
-    toast("succes custom Toast", {
-      className:"Your video is submitted",
-      draggable:true,
-      position:toast.POSITION.TOP_CENTER
+    toast("Your video is submitted", {
+      draggable: true,
+      position: toast.POSITION.TOP_CENTER,
     });
   }
 
    const handleSubmit_submit = (event) =>{
     event.preventDefault();
-   
-    successToast("Your video is submitted!");
+    successToast();
     setTimeout(() => navigate("/"), 5000);
     formRef.current.reset();
   }
