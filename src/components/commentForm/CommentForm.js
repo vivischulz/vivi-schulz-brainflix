@@ -29,9 +29,8 @@ export default function CommentForm({ handleSubmit, submitLabel }) {
       </div>
 
       <button className="form__btn" disabled={isTextareaDisabled}>
-        {submitLabel}
         <span className="form__btn-icon"></span>
-        <span className="form__btn-name">comment</span>
+        <span className="form__btn-name">{submitLabel}</span>
       </button>
     </form>
   );
