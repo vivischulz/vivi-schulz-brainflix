@@ -7,7 +7,7 @@ export default function SideBar({videos}) {
   const params = useParams();
 
    const displayVideos = (videoId) => {
-     return videos.filter((video) => video.id !== videoId);
+     return videos.filter((video) => (video.id !== videoId )&& (video.id !== "84e96018-4022-434e-80bf-000ce4cd12b8"));
    };
    
    const filterVideos = displayVideos(params.videoId);
