@@ -91,8 +91,10 @@
   }
 
   &__image {
+   display: inline-block;
     background-image: url(../../assets/images/Upload-video-preview.jpg);
     width: 100%;
+
     height:15rem;
     background-size: cover;
     margin-top: 0.8rem;
@@ -100,6 +102,10 @@
     border-radius:4px ;
     background-position: center;
     flex: 0 0 auto;
+
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
     &__btn--cancel:hover{

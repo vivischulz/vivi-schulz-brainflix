@@ -5,6 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 
+
 export default function UploadPage() {
   const navigate = useNavigate();
   const formRef = useRef();
@@ -40,7 +41,10 @@ export default function UploadPage() {
                 <h2 className="upload__subtitle upload__subtitle--margin-b">
                   Video Thumbnail
                 </h2>
-                <div className="upload__image"></div>
+            
+                <div
+                  className="upload__image"
+                ></div>
               </article>
               <section className="upload__user-input">
                 <h2 className="upload__subtitle">Title Your Video</h2>

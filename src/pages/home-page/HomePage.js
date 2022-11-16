@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+// import { BACK_END } from "../../utils/api";
 
 import HeroVideo from "../../components/heroVideo/HeroVideo";
 import Views from "../../components/views/Views";
