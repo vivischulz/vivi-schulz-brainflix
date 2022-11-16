@@ -7,7 +7,7 @@ import Views from "../../components/views/Views";
 import Relatives from "../../components/relatives/Relatives";
 import SideBar from "../../components/sidebar/SideBar";
 
-export default function HomePage({ videos }) {
+export default function HomePage({ videos}) {
   const [selectedVideo, setSelectedVideo] = useState({});
   const params = useParams();
 
@@ -26,6 +26,7 @@ export default function HomePage({ videos }) {
 
   useEffect(() => {
     if (params.videoId) {
+     
       axios
         .get(VIDEO_ID_URL(params.videoId))
         .then((response) => {
@@ -35,7 +36,8 @@ export default function HomePage({ videos }) {
     }
   }, [params]);
 
-    const selectedVideoId = selectedVideo.id;
+
+  const selectedVideoId = selectedVideo.id;
 
   return (
     <>
