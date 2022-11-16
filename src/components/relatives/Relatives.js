@@ -3,10 +3,15 @@ import {useState, useEffect} from "react";
 import CommentForm from "../commentForm/CommentForm";
 import Comment from "../comment/Comment";
 import axios from "axios";
+import { BACK_END } from "../../utils/api";
 
 export default function Relatives({ selectedVideo, selectedVideoId }) {
   const { comments } = selectedVideo;
   const [updatedComments, setUpdatedComments] = useState({});
+
+  axios
+    .get(`${BACK_END}/api/videos`)
+    .then(({ data }) => console.log("checklink", data));
 
   const SELECTED_VIDEO_ID_URL = `https://project-2-api.herokuapp.com/videos/${selectedVideoId}/comments?api_key={{BRAINFLIX__KEY}}`;
   

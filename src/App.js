@@ -1,3 +1,4 @@
+
 import "../src/App.scss";
 
 import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
@@ -10,7 +11,7 @@ import Header from './components/header/Header';
 import HomePage from "./pages/home-page/HomePage";
 import UploadPage from "./pages/upload-page/UploadPage";
 
-const VIDEOS_URL = `https://project-2-api.herokuapp.com/videos?api_key={{BRAINFLIX__KEY}}`;
+// const VIDEOS_URL = `https://project-2-api.herokuapp.com/videos?api_key={{BRAINFLIX__KEY}}`;
 // const BACK_END = process.env.REACT_APP_BACKEND_URL;
 
 export default function App() {
@@ -20,8 +21,8 @@ const [videos, setVideos] = useState([]);
 useEffect(() => {
   const fetchData = async () => {
     try {
-      const { data } = await axios.get(VIDEOS_URL);
-      console.log("data",data);
+      const { data } = await axios.get(`${BACK_END}/api/videos`);
+   
       setVideos(data);
     } catch (error) {
       console.log("Error", error)

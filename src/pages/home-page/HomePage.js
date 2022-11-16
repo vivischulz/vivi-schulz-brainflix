@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-// import { BACK_END } from "../../utils/api";
+import { BACK_END } from "../../utils/api";
 
 import HeroVideo from "../../components/heroVideo/HeroVideo";
 import Views from "../../components/views/Views";
@@ -13,8 +13,7 @@ export default function HomePage({ videos }) {
   const params = useParams();
 
   const defaultVideoId = "84e96018-4022-434e-80bf-000ce4cd12b8";
-  const VIDEO_ID_URL = (videoId) =>
-    `https://project-2-api.herokuapp.com/videos/${videoId}?api_key={{BRAINFLIX__KEY}}`;
+  const VIDEO_ID_URL = (videoId) => `${BACK_END}/api/videos/${videoId}`;
 
   useEffect(() => {
     axios
