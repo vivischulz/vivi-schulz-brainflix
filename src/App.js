@@ -16,11 +16,14 @@ export default function App() {
 
 const [videos, setVideos] = useState([]);
 
+
 useEffect(() => {
   const fetchData = async () => {
     try {
       const { data } = await axios.get(VIDEOS_URL);
-      setVideos(data);
+      const filterData = data.filter(d => d !== "84e96018-4022-434e-80bf-000ce4cd12b8");
+      setVideos(filterData);
+      
     } catch (error) {
       console.log("Error", error)
     }
@@ -30,34 +33,23 @@ useEffect(() => {
 
   return (
     <>
-
       <div className="App">
         <BrowserRouter>
           <Header />
           <Routes>
-            <Route
-              path="/"
-              element={
-                <HomePage videos={videos} />
-              }
-            />
+            <Route path="/" element={<HomePage videos={videos} />} />
             <Route path="brainFlix" element={<Navigate to="/" />} />
             <Route path="upload" element={<UploadPage />} />
-            <Route
-              path="videos"
-              element={
-                <HomePage videos={videos}/> } />
+            <Route path="videos" element={<HomePage videos={videos} />} />
             <Route
               path="videos/:videoId"
               element={
-                <HomePage
-                  videos={videos} />
+                <HomePage videos={videos}  />
               }
             />
           </Routes>
         </BrowserRouter>
       </div>
-  
     </>
   );
 }
