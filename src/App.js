@@ -21,7 +21,7 @@ useEffect(() => {
   const fetchData = async () => {
     try {
       const { data } = await axios.get(VIDEOS_URL);
-      const filterData = data.filter(d => d !== "84e96018-4022-434e-80bf-000ce4cd12b8")
+      const filterData = data.filter(d => d !== "84e96018-4022-434e-80bf-000ce4cd12b8");
       setVideos(filterData);
       
     } catch (error) {
