@@ -11,8 +11,6 @@ import Header from './components/header/Header';
 import HomePage from "./pages/home-page/HomePage";
 import UploadPage from "./pages/upload-page/UploadPage";
 
-// const VIDEOS_URL = `https://project-2-api.herokuapp.com/videos?api_key={{BRAINFLIX__KEY}}`;
-// const BACK_END = process.env.REACT_APP_BACKEND_URL;
 
 export default function App() {
 
@@ -33,34 +31,21 @@ useEffect(() => {
 
   return (
     <>
-
       <div className="App">
         <BrowserRouter>
           <Header />
           <Routes>
-            <Route
-              path="/"
-              element={
-                <HomePage videos={videos} />
-              }
-            />
+            <Route path="/" element={<HomePage videos={videos} />} />
             <Route path="brainFlix" element={<Navigate to="/" />} />
-            <Route path="upload" element={<UploadPage />} />
-            <Route
-              path="videos"
-              element={
-                <HomePage videos={videos}/> } />
+            <Route path="upload" element={<UploadPage videos={videos} />} />
+            <Route path="videos" element={<HomePage videos={videos} />} />
             <Route
               path="videos/:videoId"
-              element={
-                <HomePage
-                  videos={videos} />
-              }
+              element={<HomePage videos={videos} />}
             />
           </Routes>
         </BrowserRouter>
       </div>
-  
     </>
   );
 }

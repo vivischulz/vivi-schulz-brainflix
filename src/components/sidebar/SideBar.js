@@ -1,16 +1,16 @@
 import './SideBar.scss'
 import { Link, useParams } from "react-router-dom";
-
+import { defaultVideoId } from '../../utils/api';
 
 export default function SideBar({videos}) {
 
-  const params = useParams();
+  const {videoId} = useParams();
 
    const displayVideos = (videoId) => {
-     return videos.filter((video) => (video.id !== videoId )&& (video.id !== "84e96018-4022-434e-80bf-000ce4cd12b8"));
+     return videos.filter((video) => (video.id !== videoId )&& (video.id !== defaultVideoId));
    };
    
-  const filterVideos = displayVideos(params.videoId);
+  const filterVideos = displayVideos(videoId);
 
   return (
     <aside className="sidebar">

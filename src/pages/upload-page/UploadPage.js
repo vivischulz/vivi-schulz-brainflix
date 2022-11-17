@@ -1,39 +1,49 @@
 import "./UploadPage.scss";
 import {useNavigate} from "react-router-dom";
-import React, {useRef} from "react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import React, {useRef, useState} from "react";
 import { BACK_END } from "../../utils/api";
 import axios from "axios";
 
 
-export default function UploadPage() {
+export default function UploadPage({videos}) {
   const navigate = useNavigate();
   const formRef = useRef();
   
-    axios
-      .get(`${BACK_END}/api/videos`)
-      .then(({ data }) => console.log("checklink", data));
-
-  const successToast = () =>{
-    toast("Your video is submitted", {
-      draggable: true,
-      position: toast.POSITION.TOP_CENTER,
-    });
-  }
+  const [titleVideo, setTitleVideo] = useState("");
+  const [textArea, setTextArea] = useState("");
+  const [uploadVideo, setUploadVideo] = useState({});
 
    const handleSubmit_submit = (event) =>{
     event.preventDefault();
-    successToast();
-    setTimeout(() => navigate("/"), 5000);
-    formRef.current.reset();
+    handleUploadVideo(titleVideo, textArea);
+    setTitleVideo("");
+    setTextArea("");
   }
 
    const handleSubmit_cancel = (event) =>{
     event.preventDefault();
     navigate("/");
-    formRef.current.reset();
    }
+
+   const handleUploadVideo = (titleVideo, textArea) => {
+     const videoInput = {
+       title: titleVideo,
+       description: textArea,
+     };
+
+     if (videoInput !== "") {
+       axios
+         .post(`${BACK_END}/api/videos`, videoInput)
+         .then(({ data }) => {
+          setUploadVideo(data);
+          videos.push(data);
+          console.log(videos);
+         })
+         .catch(err=>console.log(err));
+     }
+   };
+
+
 
   return (
     <>
@@ -46,10 +56,8 @@ export default function UploadPage() {
                 <h2 className="upload__subtitle upload__subtitle--margin-b">
                   Video Thumbnail
                 </h2>
-            
-                <div
-                  className="upload__image"
-                ></div>
+
+                <div className="upload__image"></div>
               </article>
               <section className="upload__user-input">
                 <h2 className="upload__subtitle">Title Your Video</h2>
@@ -61,6 +69,8 @@ export default function UploadPage() {
                     minLength="3"
                     maxLength="300"
                     className="upload__textarea"
+                    value={titleVideo}
+                    onChange={(e)=>setTitleVideo(e.target.value)}
                   ></input>
                 </label>
                 <h2 className="upload__subtitle">Add a video description</h2>
@@ -72,6 +82,8 @@ export default function UploadPage() {
                     minLength="3"
                     maxLength="300"
                     className="upload__textarea upload__textarea--more-height"
+                    value={textArea}
+                    onChange={(e) => setTextArea(e.target.value)}
                   ></input>
                 </label>
               </section>
@@ -98,7 +110,6 @@ export default function UploadPage() {
           </section>
         </form>
       </section>
-      <ToastContainer />
     </>
   );
 }

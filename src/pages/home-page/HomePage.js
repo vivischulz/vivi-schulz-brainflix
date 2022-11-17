@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { BACK_END } from "../../utils/api";
+import { BACK_END, defaultVideoId } from "../../utils/api";
 
 import HeroVideo from "../../components/heroVideo/HeroVideo";
 import Views from "../../components/views/Views";
@@ -10,30 +10,30 @@ import SideBar from "../../components/sidebar/SideBar";
 
 export default function HomePage({ videos }) {
   const [selectedVideo, setSelectedVideo] = useState({});
-  const params = useParams();
+  const {videoId} = useParams();
 
-  const defaultVideoId = "84e96018-4022-434e-80bf-000ce4cd12b8";
+
   const VIDEO_ID_URL = (videoId) => `${BACK_END}/api/videos/${videoId}`;
 
   useEffect(() => {
     axios
       .get(VIDEO_ID_URL(defaultVideoId))
-      .then((response) => {
-        setSelectedVideo(response.data);
+      .then(({data}) => {
+        setSelectedVideo(data);
       })
       .catch((error) => console.log(error));
   }, []);
 
   useEffect(() => {
-    if (params.videoId) {
+    if (videoId) {
       axios
-        .get(VIDEO_ID_URL(params.videoId))
-        .then((response) => {
-          setSelectedVideo(response.data);
+        .get(VIDEO_ID_URL(videoId))
+        .then(({ data }) => {
+          setSelectedVideo(data);
         })
         .catch((error) => console.log(error));
     }
-  }, [params]);
+  }, [videoId]);
 
     const selectedVideoId = selectedVideo.id;
 
