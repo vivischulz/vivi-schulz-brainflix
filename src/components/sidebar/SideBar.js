@@ -1,7 +1,16 @@
 import './SideBar.scss'
-import {Link} from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+
 
 export default function SideBar({videos}) {
+
+  const params = useParams();
+
+   const displayVideos = (videoId) => {
+     return videos.filter((video) => (video.id !== videoId )&& (video.id !== "84e96018-4022-434e-80bf-000ce4cd12b8"));
+   };
+   
+  const filterVideos = displayVideos(params.videoId);
 
   return (
     <aside className="sidebar">
@@ -9,9 +18,9 @@ export default function SideBar({videos}) {
         <h2 className="sidebar__title">Next Videos</h2>
 
         <article className="sidebar__wrap-video">
-          {videos.map((video) => (
+          {filterVideos.map((video) => (
             <section className="sidebar__wrap-word" key={video.id}>
-              <Link to = {`/videos/${video.id}`}>
+              <Link to={`/videos/${video.id}`}>
                 <video
                   control="controls"
                   poster={video.image}

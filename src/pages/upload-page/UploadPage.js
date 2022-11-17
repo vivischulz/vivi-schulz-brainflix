@@ -3,13 +3,18 @@ import {useNavigate} from "react-router-dom";
 import React, {useRef} from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { BACK_END } from "../../utils/api";
+import axios from "axios";
 
 
 export default function UploadPage() {
   const navigate = useNavigate();
   const formRef = useRef();
   
+    axios
+      .get(`${BACK_END}/api/videos`)
+      .then(({ data }) => console.log("checklink", data));
+
   const successToast = () =>{
     toast("Your video is submitted", {
       draggable: true,

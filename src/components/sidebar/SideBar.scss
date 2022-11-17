@@ -69,7 +69,7 @@
 @include mx.mq-lg {
   .sidebar {
     @include mx.flexed(row, space-between, flex-start);
-   
+    border-left:1px solid $color-outline;
    
   }
 }
