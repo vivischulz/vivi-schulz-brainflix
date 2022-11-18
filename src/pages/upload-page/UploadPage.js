@@ -1,6 +1,6 @@
 import "./UploadPage.scss";
 import {useNavigate} from "react-router-dom";
-import React, {useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import { BACK_END } from "../../utils/api";
 import axios from "axios";
 
@@ -11,13 +11,12 @@ export default function UploadPage({videos}) {
   
   const [titleVideo, setTitleVideo] = useState("");
   const [textArea, setTextArea] = useState("");
-  const [uploadVideo, setUploadVideo] = useState({});
+  const [unsplashImage, setUnsplashImage]=useState("");
 
    const handleSubmit_submit = (event) =>{
     event.preventDefault();
     handleUploadVideo(titleVideo, textArea);
-    setTitleVideo("");
-    setTextArea("");
+    navigate("/");
   }
 
    const handleSubmit_cancel = (event) =>{
@@ -25,25 +24,45 @@ export default function UploadPage({videos}) {
     navigate("/");
    }
 
+     useEffect(() => {
+       axios
+         .get(
+           "https://api.unsplash.com/photos/random?&client_id=JgOs3jzDu2G-_lKsdU6TwtUZH9VkAvIxrwDJ7MFMPjk"
+         )
+         .then(({ data }) => {
+           setUnsplashImage(data.urls.regular);
+         })
+         .catch((err) => console.log(err));
+
+
+     }, []);
+
    const handleUploadVideo = (titleVideo, textArea) => {
+
      const videoInput = {
        title: titleVideo,
        description: textArea,
+       image: unsplashImage,
      };
 
+// console.log(videoInput.image);
+// console.log("videoInput.title",videoInput.title);
+// console.log("videoInput.description", videoInput.description);
      if (videoInput !== "") {
+     
        axios
          .post(`${BACK_END}/api/videos`, videoInput)
          .then(({ data }) => {
-          setUploadVideo(data);
+           console.log(data);
           videos.push(data);
-          console.log(videos);
          })
          .catch(err=>console.log(err));
-     }
+
    };
 
-
+  }
+ 
+ 
 
   return (
     <>
@@ -70,7 +89,7 @@ export default function UploadPage({videos}) {
                     maxLength="300"
                     className="upload__textarea"
                     value={titleVideo}
-                    onChange={(e)=>setTitleVideo(e.target.value)}
+                    onChange={(e) => setTitleVideo(e.target.value)}
                   ></input>
                 </label>
                 <h2 className="upload__subtitle">Add a video description</h2>

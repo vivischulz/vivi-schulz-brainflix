@@ -20,7 +20,6 @@ useEffect(() => {
   const fetchData = async () => {
     try {
       const { data } = await axios.get(`${BACK_END}/api/videos`);
-   
       setVideos(data);
     } catch (error) {
       console.log("Error", error)
