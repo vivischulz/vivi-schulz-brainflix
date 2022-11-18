@@ -45,15 +45,11 @@ export default function UploadPage({videos}) {
        image: unsplashImage,
      };
 
-// console.log(videoInput.image);
-// console.log("videoInput.title",videoInput.title);
-// console.log("videoInput.description", videoInput.description);
      if (videoInput !== "") {
      
        axios
          .post(`${BACK_END}/api/videos`, videoInput)
          .then(({ data }) => {
-           console.log(data);
           videos.push(data);
          })
          .catch(err=>console.log(err));

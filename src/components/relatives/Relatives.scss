@@ -140,6 +140,7 @@
 
     &__message-content {
       color: $color-primary;
+      line-height: 1.5;
     }
   }
 
@@ -150,6 +151,12 @@
       margin-right:2.4rem;
     
       margin-bottom: 0;
+
+    &__comment-count{
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+
     &__section-md{
       padding-bottom:0;
     }
@@ -205,8 +212,24 @@
       margin-left: 2.4rem;
       margin-right:0;
 
+      &__title{
+        margin-bottom:0.8rem ;
+      }
+
        &__comment-count{
-      margin-top: 3.6rem;
+        font-size: 1.6rem;
+        font-weight:700;
+        margin-top: 3.6rem;
+    }
+
+    &__section{
+      margin-top: 1.2rem;
+      padding-top: 1.2rem;
+      padding-bottom:1.2rem;
+    }
+
+    &__message-content{
+      line-height: 1.5;
     }
 
       &__btn{
