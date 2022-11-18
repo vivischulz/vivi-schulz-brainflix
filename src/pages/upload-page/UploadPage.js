@@ -4,6 +4,7 @@ import React, {useEffect, useRef, useState} from "react";
 import { BACK_END } from "../../utils/api";
 import axios from "axios";
 
+const UNSPLASH_KEY = process.env.REACT_APP_UNSPLASH_API_KEY;
 
 export default function UploadPage({videos}) {
   const navigate = useNavigate();
@@ -26,15 +27,11 @@ export default function UploadPage({videos}) {
 
      useEffect(() => {
        axios
-         .get(
-           "https://api.unsplash.com/photos/random?&client_id=JgOs3jzDu2G-_lKsdU6TwtUZH9VkAvIxrwDJ7MFMPjk"
-         )
+         .get(`https://api.unsplash.com/photos/random?&client_id=${UNSPLASH_KEY}`)
          .then(({ data }) => {
            setUnsplashImage(data.urls.regular);
          })
          .catch((err) => console.log(err));
-
-
      }, []);
 
    const handleUploadVideo = (titleVideo, textArea) => {
@@ -53,13 +50,10 @@ export default function UploadPage({videos}) {
           videos.push(data);
          })
          .catch(err=>console.log(err));
-
    };
 
   }
  
- 
-
   return (
     <>
       <section className="upload">

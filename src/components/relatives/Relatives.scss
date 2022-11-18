@@ -115,6 +115,7 @@
     &__message {
       line-height: 1.25;
       flex: 8 1 0;
+    
     }
 
     &__message-user {
@@ -141,6 +142,15 @@
     &__message-content {
       color: $color-primary;
       line-height: 1.5;
+    }
+
+    &__message-button{
+      @extend.btn;
+
+     padding:0 0.5rem;
+     margin:0;
+     height:3rem;
+     float:right;
     }
   }
 

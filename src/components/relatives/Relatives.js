@@ -3,23 +3,24 @@ import {useState, useEffect} from "react";
 import CommentForm from "../commentForm/CommentForm";
 import Comment from "../comment/Comment";
 import axios from "axios";
+import { BACK_END } from "../../utils/api";
 
 export default function Relatives({ selectedVideo, selectedVideoId }) {
   const { comments } = selectedVideo;
   const [updatedComments, setUpdatedComments] = useState({});
 
-    //It's not the required function
-  const SELECTED_VIDEO_ID_URL = `https://project-2-api.herokuapp.com/videos/${selectedVideoId}/comments?api_key={{BRAINFLIX__KEY}}`;
+  const SELECTED_VIDEO_ID_URL = `${BACK_END}/api/videos/${selectedVideoId}/comments`;
   
   const addComment = (text) => {
 
     const commentInput = {
-      name: 'Vivi',
       comment: text,
     };
 
     if (commentInput !== "") {
        axios.post(SELECTED_VIDEO_ID_URL, commentInput).then(({data}) => {
+        console.log(data);
+
        setUpdatedComments(data);
        comments.push(data);
       });
