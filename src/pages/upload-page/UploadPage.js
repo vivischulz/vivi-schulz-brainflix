@@ -13,6 +13,7 @@ export default function UploadPage({videos}) {
   const [titleVideo, setTitleVideo] = useState("");
   const [textArea, setTextArea] = useState("");
   const [unsplashImage, setUnsplashImage]=useState("");
+  const isPublishButtonDisabled = (titleVideo.length === 0) || (textArea.length === 0);
 
    const handleSubmit_submit = (event) =>{
     event.preventDefault();
@@ -46,8 +47,8 @@ export default function UploadPage({videos}) {
      
        axios
          .post(`${BACK_END}/api/videos`, videoInput)
-         .then(({ data }) => {
-          videos.push(data);
+         .then((res) => {
+         console.log(res);
          })
          .catch(err=>console.log(err));
    };
@@ -99,7 +100,7 @@ export default function UploadPage({videos}) {
             </section>
           </section>
           <section className="upload__btn-group ">
-            <button
+            <button disabled = {isPublishButtonDisabled}
               className="upload__btn upload__btn--publish "
               type="submit"
               onClick={handleSubmit_submit}

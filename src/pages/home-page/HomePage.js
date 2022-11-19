@@ -8,38 +8,72 @@ import Views from "../../components/views/Views";
 import Relatives from "../../components/relatives/Relatives";
 import SideBar from "../../components/sidebar/SideBar";
 
-export default function HomePage({ videos }) {
+export default function HomePage() {
   const [selectedVideo, setSelectedVideo] = useState({});
-  const {videoId} = useParams();
+  const { videoId } = useParams();
 
+
+  const [videos, setVideos] = useState([]);
 
   const VIDEO_ID_URL = (videoId) => `${BACK_END}/api/videos/${videoId}`;
 
   useEffect(() => {
-    axios
-      .get(VIDEO_ID_URL(defaultVideoId))
-      .then(({data}) => {
+    const fetchAllVideos = async () => {
+      try{
+        const {data} = await axios.get(`${BACK_END}/api/videos`);
+        const dataExcludeDefault = data.filter(d => d.id !== defaultVideoId);
+        setVideos(dataExcludeDefault);
+      } catch (err) {
+        console.log("Error", err);
+      }
+    };
+    
+    const fetchDisplayVideo = async () =>{
+      try{
+        const {data} = await axios.get(VIDEO_ID_URL(defaultVideoId));
         setSelectedVideo(data);
-      })
-      .catch((error) => console.log(error));
-  }, []);
+      }catch(err){
+        console.log("Error", err);
+      }
+    }
+
+    fetchDisplayVideo();
+    fetchAllVideos();
+  },[]);
 
   useEffect(() => {
     if (videoId) {
-      axios
-        .get(VIDEO_ID_URL(videoId))
-        .then(({ data }) => {
-          setSelectedVideo(data);
-        })
-        .catch((error) => console.log(error));
-    }
-  }, [videoId]);
+      const fetchdefaultVideo = async () => {
+        try {
+          const { data } = await axios.get(`${BACK_END}/api/videos`);
+          const dataExcludeDefault = data.filter(
+            (d) => d.id === defaultVideoId
+          );
+          const fullVideos = [...data, dataExcludeDefault];
+          setVideos(fullVideos);
+        } catch (err) {
+          console.log("Error", err);
+        }
+      };
 
-    const selectedVideoId = selectedVideo.id;
+      const fetchSelectedVideo = async () =>{
+        try{
+          const {data} =await axios.get(VIDEO_ID_URL(videoId));
+          setSelectedVideo(data);
+        } catch(err){
+        console.log("error", err);
+        }
+    }
+    fetchdefaultVideo();
+    fetchSelectedVideo();
+  }
+}, [videoId]);
+
+  const selectedVideoId = selectedVideo.id;
 
   return (
     <>
-      <HeroVideo selectedVideo={selectedVideo} />
+      <HeroVideo selectedVideo={selectedVideo}/>
       <section className="App__wrap">
         <section className="App__wrap-left">
           <Views selectedVideo={selectedVideo} />

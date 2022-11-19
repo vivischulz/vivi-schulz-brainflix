@@ -1,41 +1,39 @@
 import "./Relatives.scss";
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
+import { BACK_END } from "../../utils/api";
 import CommentForm from "../commentForm/CommentForm";
 import Comment from "../comment/Comment";
 import axios from "axios";
-import { BACK_END } from "../../utils/api";
 
 export default function Relatives({ selectedVideo, selectedVideoId }) {
   const { comments } = selectedVideo;
   const [updatedComments, setUpdatedComments] = useState({});
 
   const SELECTED_VIDEO_ID_URL = `${BACK_END}/api/videos/${selectedVideoId}/comments`;
-  
-  const addComment = (text) => {
 
+  const addComment = (text) => {
     const commentInput = {
       comment: text,
     };
 
     if (commentInput !== "") {
-       axios.post(SELECTED_VIDEO_ID_URL, commentInput).then(({data}) => {
-        console.log(data);
-
-       setUpdatedComments(data);
-       comments.push(data);
+      axios.post(SELECTED_VIDEO_ID_URL, commentInput).then(({ data }) => {
+        setUpdatedComments(data);
+        comments.push(data);
       });
     }
   };
 
-  
   useEffect(() => {
-    if (!updatedComments){return}
+    if (!updatedComments) {
+      return;
+    }
     setUpdatedComments(updatedComments);
-    },[updatedComments,comments]);
+  }, [updatedComments, comments]);
 
-   const getSortTime = (timestamp) => {
+  const getSortTime = () => {
     return comments.sort((a, b) => b.timestamp - a.timestamp);
-   };
+  };
 
   return (
     <>
