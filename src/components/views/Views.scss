@@ -16,7 +16,7 @@
   &__title {
     @extend .page__header;
     margin-bottom: 1.6rem;
-    font-weight: 700;
+    font-weight: 600;
   }
 
   &__detail {
@@ -31,6 +31,7 @@
 
   &__author {
     @extend .font__section-header;
+    font-size: 1.6rem;
     margin-right: 1rem;
     position: relative;
     top: -5px;
@@ -78,6 +79,7 @@
   &__p{
     margin-top: 1.6rem;
     line-height: 1.5;
+    font-size: 1.3rem;
     font-weight:400;
     letter-spacing:0.1rem;
   }
@@ -89,7 +91,17 @@
     margin-right:2.4rem;
 
     &__title{
+      font-size:3.2rem;
       margin-bottom: 1rem;
+    }
+
+    &__author{
+      font-size: 1.6rem;
+      font-weight:700;
+    }
+
+    &__p{
+      font-size:1.4rem;
     }
 
     &__detail {
@@ -124,10 +136,18 @@
 @include mx.mq-lg {
   .views {
   width:96.7%;
+
+  &__title{
+      font-size:3.6rem;
+    }
+
+  &__author{
+    font-size: 1.8rem;
+  }
  
- border-right:1px solid $color-outline;
    &__p{
       padding-right: 2.4rem;
+      font-size:1.4rem;
     }
 
     &__detail{

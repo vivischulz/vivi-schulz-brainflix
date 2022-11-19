@@ -1,16 +1,19 @@
-import './SideBar.scss'
+import "./SideBar.scss";
 import { Link, useParams } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 
+export default function SideBar({ videos }) {
+  const { videoId } = useParams();
 
-export default function SideBar({videos}) {
+  const getNewId = () => {
+    return uuidv4();
+  };
 
-  const params = useParams();
+  const displayVideos = (videoId) => {
+    return videos.filter((video) => video.id !== videoId);
+  };
 
-   const displayVideos = (videoId) => {
-     return videos.filter((video) => (video.id !== videoId )&& (video.id !== "84e96018-4022-434e-80bf-000ce4cd12b8"));
-   };
-   
-   const filterVideos = displayVideos(params.videoId);
+  const filterVideos = displayVideos(videoId);
 
   return (
     <aside className="sidebar">
@@ -19,7 +22,7 @@ export default function SideBar({videos}) {
 
         <article className="sidebar__wrap-video">
           {filterVideos.map((video) => (
-            <section className="sidebar__wrap-word" key={video.id}>
+            <section key={getNewId()} className="sidebar__wrap-word">
               <Link to={`/videos/${video.id}`}>
                 <video
                   control="controls"
@@ -37,4 +40,4 @@ export default function SideBar({videos}) {
       </section>
     </aside>
   );
-};
+}

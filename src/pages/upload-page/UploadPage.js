@@ -1,34 +1,61 @@
 import "./UploadPage.scss";
 import {useNavigate} from "react-router-dom";
-import React, {useRef} from "react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import React, {useEffect, useRef, useState} from "react";
+import { BACK_END } from "../../utils/api";
+import axios from "axios";
 
+
+const UNSPLASH_KEY = process.env.REACT_APP_UNSPLASH_API_KEY;
 
 export default function UploadPage() {
   const navigate = useNavigate();
   const formRef = useRef();
   
-  const successToast = () =>{
-    toast("Your video is submitted", {
-      draggable: true,
-      position: toast.POSITION.TOP_CENTER,
-    });
-  }
+  const [titleVideo, setTitleVideo] = useState("");
+  const [textArea, setTextArea] = useState("");
+  const [unsplashImage, setUnsplashImage]=useState("");
+  const isPublishButtonDisabled = (titleVideo.length === 0) || (textArea.length === 0);
 
    const handleSubmit_submit = (event) =>{
     event.preventDefault();
-    successToast();
-    setTimeout(() => navigate("/"), 5000);
-    formRef.current.reset();
+    handleUploadVideo(titleVideo, textArea);
+    navigate("/");
   }
 
    const handleSubmit_cancel = (event) =>{
     event.preventDefault();
     navigate("/");
-    formRef.current.reset();
    }
 
+     useEffect(() => {
+       axios
+         .get(`https://api.unsplash.com/photos/random?&client_id=${UNSPLASH_KEY}`)
+         .then(({ data }) => {
+           setUnsplashImage(data.urls.regular);
+         })
+         .catch((err) => console.log(err));
+     }, []);
+
+   const handleUploadVideo = (titleVideo, textArea) => {
+
+     const videoInput = {
+       title: titleVideo,
+       description: textArea,
+       image: unsplashImage,
+     };
+
+     if (videoInput !== "") {
+       axios
+         .post(`${BACK_END}/api/videos`, videoInput)
+         .then((res) => {
+        return res;
+         })
+         .catch(err=>console.log(err));
+   
+  }
+
+}
+ 
   return (
     <>
       <section className="upload">
@@ -40,6 +67,7 @@ export default function UploadPage() {
                 <h2 className="upload__subtitle upload__subtitle--margin-b">
                   Video Thumbnail
                 </h2>
+
                 <div className="upload__image"></div>
               </article>
               <section className="upload__user-input">
@@ -52,6 +80,8 @@ export default function UploadPage() {
                     minLength="3"
                     maxLength="300"
                     className="upload__textarea"
+                    value={titleVideo}
+                    onChange={(e) => setTitleVideo(e.target.value)}
                   ></input>
                 </label>
                 <h2 className="upload__subtitle">Add a video description</h2>
@@ -63,6 +93,8 @@ export default function UploadPage() {
                     minLength="3"
                     maxLength="300"
                     className="upload__textarea upload__textarea--more-height"
+                    value={textArea}
+                    onChange={(e) => setTextArea(e.target.value)}
                   ></input>
                 </label>
               </section>
@@ -70,6 +102,7 @@ export default function UploadPage() {
           </section>
           <section className="upload__btn-group ">
             <button
+              disabled={isPublishButtonDisabled}
               className="upload__btn upload__btn--publish "
               type="submit"
               onClick={handleSubmit_submit}
@@ -89,7 +122,7 @@ export default function UploadPage() {
           </section>
         </form>
       </section>
-      <ToastContainer />
+
     </>
   );
 }
