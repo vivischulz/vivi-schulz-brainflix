@@ -4,9 +4,10 @@ import React, {useEffect, useRef, useState} from "react";
 import { BACK_END } from "../../utils/api";
 import axios from "axios";
 
+
 const UNSPLASH_KEY = process.env.REACT_APP_UNSPLASH_API_KEY;
 
-export default function UploadPage({videos}) {
+export default function UploadPage() {
   const navigate = useNavigate();
   const formRef = useRef();
   
@@ -44,16 +45,16 @@ export default function UploadPage({videos}) {
      };
 
      if (videoInput !== "") {
-     
        axios
          .post(`${BACK_END}/api/videos`, videoInput)
          .then((res) => {
-         console.log(res);
+        return res;
          })
          .catch(err=>console.log(err));
-   };
-
+   
   }
+
+}
  
   return (
     <>
@@ -100,7 +101,8 @@ export default function UploadPage({videos}) {
             </section>
           </section>
           <section className="upload__btn-group ">
-            <button disabled = {isPublishButtonDisabled}
+            <button
+              disabled={isPublishButtonDisabled}
               className="upload__btn upload__btn--publish "
               type="submit"
               onClick={handleSubmit_submit}
@@ -120,6 +122,7 @@ export default function UploadPage({videos}) {
           </section>
         </form>
       </section>
+
     </>
   );
 }
