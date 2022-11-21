@@ -1,7 +1,7 @@
 import Comment from "../comment/Comment";
 import CommentForm from "../commentForm/CommentForm";
 
-export default function Comments({ comments, addComment, onDeleteSubmit }) {
+export default function Comments({ comments, addComment, handleDelete }) {
   const getSortTime = () => {
     return comments.sort((a, b) => b.timestamp - a.timestamp);
   };
@@ -19,7 +19,7 @@ export default function Comments({ comments, addComment, onDeleteSubmit }) {
         <section className="comment comment--message-block">
           {comments?.map((comment) => (
             <Comment
-              onSubmit={onDeleteSubmit}
+              handleDelete={handleDelete}
               comment={comment}
               key={comment.id}
               sortTime={getSortTime(comment.timestamp)}
