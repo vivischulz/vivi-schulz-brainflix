@@ -1,9 +1,8 @@
 import "./Relatives.scss";
 import { useState, useEffect } from "react";
 import { BACK_END } from "../../utils/api";
-import CommentForm from "../commentForm/CommentForm";
-import Comment from "../comment/Comment";
 import axios from "axios";
+import Comments from "../comments/Comments";
 
 export default function Relatives({ selectedVideo, selectedVideoId }) {
   const { comments } = selectedVideo;
@@ -20,6 +19,7 @@ export default function Relatives({ selectedVideo, selectedVideoId }) {
       axios.post(SELECTED_VIDEO_ID_URL, commentInput).then(({ data }) => {
         setUpdatedComments(data);
         comments.push(data);
+       
       });
     }
   };
@@ -31,34 +31,30 @@ export default function Relatives({ selectedVideo, selectedVideoId }) {
     setUpdatedComments(updatedComments);
   }, [updatedComments, comments]);
 
-  const getSortTime = () => {
-    return comments.sort((a, b) => b.timestamp - a.timestamp);
+
+  const handleDelete = (event, commentId) => {
+    event.preventDefault();
+ 
+    axios
+      .delete(`${BACK_END}/api/videos/${selectedVideoId}/${commentId}`)
+      .then(({data}) => {
+     
+        const backendComments = data.comments;
+        const updateCommentsAfterDelete = backendComments.filter(
+          (comment) => comment.id !== commentId
+        );
+        setUpdatedComments(updateCommentsAfterDelete);
+      
+        comments.splice(0, comments.length, ...updateCommentsAfterDelete);
+  
+      });
   };
 
   return (
-    <>
-      <section className="form">
-        <p className="form__comment-count">{comments?.length} Comments</p>
-        <div className="form__section form__section-md">
-          <div className="form__form-image"></div>
-          <CommentForm submitLabel="Comment" handleSubmit={addComment} />
-        </div>
-      </section>
-      {comments?.length > 0 ? (
-        <section className="comment comment--message-block">
-          {comments?.map((comment) => (
-            <Comment
-              comment={comment}
-              key={comment.id}
-              sortTime={getSortTime(comment.timestamp)}
-            />
-          ))}
-        </section>
-      ) : (
-        <section className="comment__no-data-container">
-          <p className="comment__no-data">No Comments</p>
-        </section>
-      )}
-    </>
+    <Comments
+      handleDelete={handleDelete}
+      addComment={addComment}
+      comments={comments}
+    />
   );
 }
