@@ -153,6 +153,14 @@
      height:3rem;
      float:right;
     }
+
+    &__no-data{
+      padding-left: 1.6rem;
+      padding-top:1.6rem;
+      padding-bottom:1.6rem;
+      font-size:1.8rem;
+      
+    }
   }
 
   @include mx.mq-md {
