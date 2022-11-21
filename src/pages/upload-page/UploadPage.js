@@ -13,7 +13,7 @@ export default function UploadPage() {
   
   const [titleVideo, setTitleVideo] = useState("");
   const [textArea, setTextArea] = useState("");
-  const [unsplashImage, setUnsplashImage]=useState("");
+  // const [unsplashImage, setUnsplashImage]=useState("");
   const isPublishButtonDisabled = (titleVideo.length === 0) || (textArea.length === 0);
 
    const handleSubmit_submit = (event) =>{
@@ -27,21 +27,21 @@ export default function UploadPage() {
     navigate("/");
    }
 
-     useEffect(() => {
-       axios
-         .get(`https://api.unsplash.com/photos/random?&client_id=${UNSPLASH_KEY}`)
-         .then(({ data }) => {
-           setUnsplashImage(data.urls.regular);
-         })
-         .catch((err) => console.log(err));
-     }, []);
+    //  useEffect(() => {
+    //    axios
+    //      .get(`https://api.unsplash.com/photos/random?&client_id=${UNSPLASH_KEY}`)
+    //      .then(({ data }) => {
+    //        setUnsplashImage(data.urls.regular);
+    //      })
+    //      .catch((err) => console.log(err));
+    //  }, []);
 
    const handleUploadVideo = (titleVideo, textArea) => {
 
      const videoInput = {
        title: titleVideo,
        description: textArea,
-       image: unsplashImage,
+      //  image: unsplashImage,
      };
 
      if (videoInput !== "") {

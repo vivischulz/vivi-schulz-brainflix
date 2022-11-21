@@ -1,9 +1,9 @@
 import "./Relatives.scss";
 import { useState, useEffect } from "react";
 import { BACK_END } from "../../utils/api";
-import CommentForm from "../commentForm/CommentForm";
-import Comment from "../comment/Comment";
+import { useParams } from "react-router-dom";
 import axios from "axios";
+import Comments from "../comments/Comments";
 
 export default function Relatives({ selectedVideo, selectedVideoId }) {
   const { comments } = selectedVideo;
@@ -11,6 +11,7 @@ export default function Relatives({ selectedVideo, selectedVideoId }) {
 
   const SELECTED_VIDEO_ID_URL = `${BACK_END}/api/videos/${selectedVideoId}/comments`;
 
+  //AddComment function is working, however I am not figuring out how to write it into JSON yet
   const addComment = (text) => {
     const commentInput = {
       comment: text,
@@ -24,41 +25,41 @@ export default function Relatives({ selectedVideo, selectedVideoId }) {
     }
   };
 
-  useEffect(() => {
-    if (!updatedComments) {
-      return;
-    }
-    setUpdatedComments(updatedComments);
-  }, [updatedComments, comments]);
+  // useEffect(() => {
+  //   if (!updatedComments) {
+  //     return;
+  //   }
+  //   setUpdatedComments(updatedComments);
+  // }, [updatedComments, comments]);
 
-  const getSortTime = () => {
-    return comments.sort((a, b) => b.timestamp - a.timestamp);
-  };
+
+    const { commentId } = useParams();
+
+//Therefore Delete comment function can not have update comment to work with
+    const onDeleteSubmit = (event) => {
+      event.preventDefault();
+      if (!updatedComments) {
+        return;
+      }
+      axios.delete(`${BACK_END}/api/videos/${selectedVideoId}/${commentId}`)
+      .then(res=>{
+      console.log(res);
+
+        // const updateCommentsAfterDelete = comments.filter(
+        //   (comment) => comment.id !== commentId
+        // );
+        // setUpdatedComments(updateCommentsAfterDelete);
+      })
+      
+    };
+
 
   return (
-    <>
-      <section className="form">
-        <p className="form__comment-count">{comments?.length} Comments</p>
-        <div className="form__section form__section-md">
-          <div className="form__form-image"></div>
-          <CommentForm submitLabel="Comment" handleSubmit={addComment} />
-        </div>
-      </section>
-      {comments?.length > 0 ? (
-        <section className="comment comment--message-block">
-          {comments?.map((comment) => (
-            <Comment
-              comment={comment}
-              key={comment.id}
-              sortTime={getSortTime(comment.timestamp)}
-            />
-          ))}
-        </section>
-      ) : (
-        <section className="comment__no-data-container">
-          <p className="comment__no-data">No Comments</p>
-        </section>
-      )}
-    </>
+    <Comments
+      onSubmit={onDeleteSubmit}
+      addComment={addComment}
+      comments={comments}
+    />
   );
+
 }

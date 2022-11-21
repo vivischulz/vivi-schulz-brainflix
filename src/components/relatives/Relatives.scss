@@ -146,9 +146,10 @@
 
     &__message-button{
       @extend.btn;
-
+     font-size: 1rem;
      padding:0 0.5rem;
      margin:0;
+     margin-top:0.5rem;
      height:3rem;
      float:right;
     }
