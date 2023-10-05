@@ -11,8 +11,9 @@ BrainFlix is a React application that encompasses both the frontend and backend,
   3. npm run server
 
 - Start your client
-  1. cd into the client folder
-  2. npm start
+  1. clone the frontend https://github.com/vivi-su/vivi-schulz-brainflix
+  2. cd into the client folder
+  3. npm start
 
 ## Tech Stack
 ReactJS 
